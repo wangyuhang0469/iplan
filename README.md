@@ -12,7 +12,7 @@ iplan是一款可以写计划的app，但又不只是写计划的app,他的出�
 	  <tr>
 	    <td>王宇航</td>
 	    <td>http://www.hostedredmine.com/users/57426</td>
-      <td>https://github.com/wangyuhang0469/iplan</td>
+      <td>https://github.com/wangyuhang0469</td>
 	    <td>项目经理   开发工程师</td>
 	  </tr>
     <tr>
