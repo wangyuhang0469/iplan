@@ -37,9 +37,6 @@ android {
                 }
             }
         }
-        dexOptions {
-            incremental false
-        }
 
         lintOptions {
             abortOnError false
