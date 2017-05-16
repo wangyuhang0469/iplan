@@ -11,3 +11,4 @@ public class ExampleInstrumentedTest extends ApplicationTestCase<Application> {
         super(Application.class);
     }
 }
+

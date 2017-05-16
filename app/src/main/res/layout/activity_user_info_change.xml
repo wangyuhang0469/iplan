@@ -75,17 +75,20 @@
         android:padding="10dp" >
 
         <TextView
+            android:id="@+id/sex"
             style="@style/style_text_black"
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
             android:text="@string/add_sex" />
-        <TextView
+
+        <EditText
             android:id="@+id/tv_sex"
             style="@style/style_text_black"
-            android:layout_alignParentRight="true"
+            android:layout_alignRight="@+id/sex"
             android:layout_centerVertical="true"
             android:layout_marginRight="20dp"
-            android:drawablePadding="10dp" />
+            android:drawablePadding="10dp"  />
+
     </RelativeLayout>
 
     <RelativeLayout
@@ -129,30 +132,5 @@
             android:layout_marginRight="20dp"
             android:drawablePadding="10dp" />
     </RelativeLayout>
-
-
-
-    <Button
-        android:id="@+id/btn_add_friend"
-        style="@style/style_text_white"
-        android:background="@drawable/btn_login_selector"
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:layout_marginLeft="@dimen/activity_vertical_margin"
-        android:layout_marginRight="@dimen/activity_vertical_margin"
-        android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:text="@string/add_friend"
-        />
-
-    <Button
-        android:id="@+id/btn_chat"
-        style="@style/style_text_white"
-        android:background="@drawable/btn_login_selector"
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:layout_marginLeft="@dimen/activity_vertical_margin"
-        android:layout_marginRight="@dimen/activity_vertical_margin"
-        android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:text="@string/chat" />
 
 </LinearLayout>

@@ -17,8 +17,10 @@
     <string name="mian_tab_set">设置</string>
 
     <string name="add_avator">头像</string>
-    <string name="add_nick">昵称</string>
-    <string name="add_name">账号</string>
+    <string name="add_sex">性别</string>
+    <string name="add_age">年龄</string>
+    <string name="add_birth">生日</string>
+    <string name="add_name">用户名</string>
     <string name="agree">接受</string>
     <string name="new_friend">新的朋友</string>
 
@@ -27,6 +29,10 @@
 
     <string name="set_notify">接收新消息通知</string>
     <string name="set_myinfo">个人资料</string>
+    <string name="set_share">分享</string>
+    <string name="set_about_us">关于我们</string>
+    <string name="set_problems">常见问题</string>
+
     <string name="set_blacklist">黑名单</string>
     <string name="set_voice">声音</string>
     <string name="set_vibrate">震动</string>
