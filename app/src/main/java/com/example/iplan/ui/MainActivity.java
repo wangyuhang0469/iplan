@@ -13,9 +13,11 @@ import com.example.iplan.base.BaseActivity;
 import com.example.iplan.bean.User;
 import com.example.iplan.db.NewFriendManager;
 import com.example.iplan.event.RefreshEvent;
+import com.example.iplan.ui.fragment.BlankFragment;
 import com.example.iplan.ui.fragment.ContactFragment;
 
 import com.example.iplan.ui.fragment.ConversationFragment;
+import com.example.iplan.ui.fragment.HomepageFragment;
 import com.example.iplan.ui.fragment.SetFragment;
 import com.example.iplan.util.IMMLeaks;
 import com.orhanobut.logger.Logger;
@@ -57,9 +59,14 @@ public class MainActivity extends BaseActivity implements ObseverListener {
     @Bind(R.id.iv_contact_tips)
     ImageView iv_contact_tips;
 
+    @Bind(R.id.btn_sjb)
+    Button btn_sjb;
+
     private Button[] mTabs;
+    private HomepageFragment homepageFragment;
     private ConversationFragment conversationFragment;
     private SetFragment setFragment;
+    private BlankFragment blankFragment;
     ContactFragment contactFragment;
     private Fragment[] fragments;
     private int index;
@@ -97,25 +104,28 @@ public class MainActivity extends BaseActivity implements ObseverListener {
     @Override
     protected void initView() {
         super.initView();
-        mTabs = new Button[3];
+        mTabs = new Button[4];
         mTabs[0] = btn_conversation;
         mTabs[1] = btn_contact;
         mTabs[2] =btn_set;
+        mTabs[3]=btn_sjb;
         mTabs[0].setSelected(true);
         initTab();
     }
 
     private void initTab(){
-        conversationFragment = new ConversationFragment();
+        homepageFragment = new HomepageFragment();
         setFragment = new SetFragment();
         contactFragment=new ContactFragment();
-        fragments = new Fragment[] {conversationFragment, contactFragment,setFragment};
+        blankFragment=new BlankFragment();
+        fragments = new Fragment[] {homepageFragment, contactFragment,setFragment,blankFragment};
         getSupportFragmentManager().beginTransaction()
-                .add(R.id.fragment_container, conversationFragment).
+                .add(R.id.fragment_container, homepageFragment).
                 add(R.id.fragment_container, contactFragment)
                 .add(R.id.fragment_container, setFragment)
-                .hide(setFragment).hide(contactFragment)
-                .show(conversationFragment).commit();
+                .add(R.id.fragment_container, blankFragment)
+                .hide(blankFragment).hide(setFragment).hide(contactFragment)
+                .show(homepageFragment).commit();
     }
 
     public void onTabSelect(View view) {
@@ -128,6 +138,9 @@ public class MainActivity extends BaseActivity implements ObseverListener {
                 break;
             case R.id.btn_set:
                 index = 2;
+                break;
+            case R.id.btn_sjb:
+                index = 3;
                 break;
         }
         onTabIndex(index);
