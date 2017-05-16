@@ -13,7 +13,6 @@ import com.example.iplan.base.BaseActivity;
 import com.example.iplan.bean.User;
 import com.example.iplan.db.NewFriendManager;
 import com.example.iplan.event.RefreshEvent;
-import com.example.iplan.ui.fragment.BlankFragment;
 import com.example.iplan.ui.fragment.ContactFragment;
 
 import com.example.iplan.ui.fragment.ConversationFragment;
@@ -59,14 +58,13 @@ public class MainActivity extends BaseActivity implements ObseverListener {
     @Bind(R.id.iv_contact_tips)
     ImageView iv_contact_tips;
 
-    @Bind(R.id.btn_sjb)
-    Button btn_sjb;
+    @Bind(R.id.btn_homepgae)
+    Button btn_homepage;
 
     private Button[] mTabs;
     private HomepageFragment homepageFragment;
     private ConversationFragment conversationFragment;
     private SetFragment setFragment;
-    private BlankFragment blankFragment;
     ContactFragment contactFragment;
     private Fragment[] fragments;
     private int index;
@@ -105,41 +103,41 @@ public class MainActivity extends BaseActivity implements ObseverListener {
     protected void initView() {
         super.initView();
         mTabs = new Button[4];
-        mTabs[0] = btn_conversation;
-        mTabs[1] = btn_contact;
-        mTabs[2] =btn_set;
-        mTabs[3]=btn_sjb;
+        mTabs[0] = btn_homepage;
+        mTabs[1] = btn_conversation;
+        mTabs[2] = btn_contact;
+        mTabs[3] = btn_set;
         mTabs[0].setSelected(true);
         initTab();
     }
 
     private void initTab(){
         homepageFragment = new HomepageFragment();
+        conversationFragment = new ConversationFragment();
         setFragment = new SetFragment();
         contactFragment=new ContactFragment();
-        blankFragment=new BlankFragment();
-        fragments = new Fragment[] {homepageFragment, contactFragment,setFragment,blankFragment};
+        fragments = new Fragment[] {homepageFragment,conversationFragment, contactFragment,setFragment};
         getSupportFragmentManager().beginTransaction()
-                .add(R.id.fragment_container, homepageFragment).
-                add(R.id.fragment_container, contactFragment)
+                .add(R.id.fragment_container, homepageFragment)
+                .add(R.id.fragment_container, conversationFragment)
+                .add(R.id.fragment_container, contactFragment)
                 .add(R.id.fragment_container, setFragment)
-                .add(R.id.fragment_container, blankFragment)
-                .hide(blankFragment).hide(setFragment).hide(contactFragment)
+                .hide(setFragment).hide(contactFragment).hide(conversationFragment)
                 .show(homepageFragment).commit();
     }
 
     public void onTabSelect(View view) {
         switch (view.getId()) {
-            case R.id.btn_conversation:
+            case R.id.btn_homepgae:
                 index = 0;
                 break;
-            case R.id.btn_contact:
+            case R.id.btn_conversation:
                 index = 1;
                 break;
-            case R.id.btn_set:
+            case R.id.btn_contact:
                 index = 2;
                 break;
-            case R.id.btn_sjb:
+            case R.id.btn_set:
                 index = 3;
                 break;
         }
