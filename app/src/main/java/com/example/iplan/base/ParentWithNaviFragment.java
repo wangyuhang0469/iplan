@@ -121,7 +121,7 @@ public abstract class ParentWithNaviFragment extends BaseFragment {
     public void setNavBackground(int color){
         ll_navi.setBackgroundColor(color);
     }
-
+    
     /**设置右边按钮的文字大小
      * @param dimenId
      */

@@ -10,12 +10,14 @@ import com.example.iplan.R;
 import com.example.iplan.base.ImageLoaderFactory;
 import com.example.iplan.base.ParentWithNaviActivity;
 import com.example.iplan.bean.AddFriendMessage;
+import com.example.iplan.bean.ScheduleMessage;
 import com.example.iplan.bean.User;
 
 import java.util.HashMap;
 import java.util.Map;
 
 import butterknife.Bind;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
 import cn.bmob.newim.BmobIM;
 import cn.bmob.newim.bean.BmobIMConversation;
@@ -44,6 +46,10 @@ public class UserInfoActivity extends ParentWithNaviActivity {
 
     User user;
     BmobIMUserInfo info;
+
+    @Bind(R.id.btn_send)
+    Button btnSend;
+
     @Override
     protected String title() {
         return "个人资料";
@@ -53,42 +59,48 @@ public class UserInfoActivity extends ParentWithNaviActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_info);
+        ButterKnife.bind(this);
         initNaviView();
-        user=(User)getBundle().getSerializable("u");
-        if(user.getObjectId().equals(getCurrentUid())){
+        user = (User) getBundle().getSerializable("u");
+        if (user.getObjectId().equals(getCurrentUid())) {
             btn_add_friend.setVisibility(View.GONE);
 
-        }else{
+        } else {
             btn_add_friend.setVisibility(View.VISIBLE);
 
         }
         //构造聊天方的用户信息:传入用户id、用户名和用户头像三个参数
-        info = new BmobIMUserInfo(user.getObjectId(),user.getUsername(),user.getAvatar());
-        ImageLoaderFactory.getLoader().loadAvator(iv_avator,user.getAvatar(),R.mipmap.head);
+        info = new BmobIMUserInfo(user.getObjectId(), user.getUsername(), user.getAvatar());
+        ImageLoaderFactory.getLoader().loadAvator(iv_avator, user.getAvatar(), R.mipmap.head);
         tv_name.setText(user.getUsername());
     }
 
     @OnClick(R.id.btn_add_friend)
-    public void onAddClick(View view){
+    public void onAddClick(View view) {
         sendAddFriendMessage();
+    }
+
+    @OnClick(R.id.btn_send)
+    public void onSendClick(View view) {
+        sendSchedukeMessage();
     }
 
     /**
      * 发送添加好友的请求
      */
-    private void sendAddFriendMessage(){
+    private void sendAddFriendMessage() {
         //启动一个会话，如果isTransient设置为true,则不会创建在本地会话表中创建记录，
         //设置isTransient设置为false,则会在本地数据库的会话列表中先创建（如果没有）与该用户的会话信息，且将用户信息存储到本地的用户表中
-        BmobIMConversation c = BmobIM.getInstance().startPrivateConversation(info, true,null);
+        BmobIMConversation c = BmobIM.getInstance().startPrivateConversation(info, true, null);
         //这个obtain方法才是真正创建一个管理消息发送的会话
         BmobIMConversation conversation = BmobIMConversation.obtain(BmobIMClient.getInstance(), c);
-        AddFriendMessage msg =new AddFriendMessage();
+        AddFriendMessage msg = new AddFriendMessage();
         User currentUser = BmobUser.getCurrentUser(User.class);
         msg.setContent("很高兴认识你，可以加个好友吗?");//给对方的一个留言信息
-        Map<String,Object> map =new HashMap<>();
+        Map<String, Object> map = new HashMap<>();
         map.put("name", currentUser.getUsername());//发送者姓名，这里只是举个例子，其实可以不需要传发送者的信息过去
-        map.put("avatar",currentUser.getAvatar());//发送者的头像
-        map.put("uid",currentUser.getObjectId());//发送者的uid
+        map.put("avatar", currentUser.getAvatar());//发送者的头像
+        map.put("uid", currentUser.getObjectId());//发送者的uid
         msg.setExtraMap(map);
         conversation.sendMessage(msg, new MessageSendListener() {
             @Override
@@ -101,6 +113,36 @@ public class UserInfoActivity extends ParentWithNaviActivity {
             }
         });
     }
+
+    private void sendSchedukeMessage() {
+        //启动一个会话，如果isTransient设置为true,则不会创建在本地会话表中创建记录，
+        //设置isTransient设置为false,则会在本地数据库的会话列表中先创建（如果没有）与该用户的会话信息，且将用户信息存储到本地的用户表中
+        BmobIMConversation c = BmobIM.getInstance().startPrivateConversation(info, true, null);
+        //这个obtain方法才是真正创建一个管理消息发送的会话
+        BmobIMConversation conversation = BmobIMConversation.obtain(BmobIMClient.getInstance(), c);
+        ScheduleMessage msg = new ScheduleMessage();
+//        User currentUser = BmobUser.getCurrentUser(User.class);
+        msg.setContent("发送了个时间表给你");//给对方的一个留言信息
+        Map<String, Object> map = new HashMap<>();
+//        map.put("name", currentUser.getUsername());//发送者姓名，这里只是举个例子，其实可以不需要传发送者的信息过去
+//        map.put("avatar",currentUser.getAvatar());//发送者的头像
+//        map.put("uid",currentUser.getObjectId());//发送者的uid
+        map.put("hour", "22");
+        map.put("min", "10");
+        map.put("dowhat", "干XXX");
+        msg.setExtraMap(map);
+        conversation.sendMessage(msg, new MessageSendListener() {
+            @Override
+            public void done(BmobIMMessage msg, BmobException e) {
+                if (e == null) {//发送成功
+                    toast("发送计划表成功");
+                } else {//发送失败
+                    toast("发送失败:" + e.getMessage());
+                }
+            }
+        });
+    }
+
 
 //    @OnClick(R.id.btn_chat)
 //    public void onChatClick(View view){

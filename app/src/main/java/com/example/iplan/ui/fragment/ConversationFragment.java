@@ -208,7 +208,7 @@ public class ConversationFragment extends ParentWithNaviFragment {
      */
     @Subscribe
     public void onEventMainThread(RefreshEvent event){
-        log("---会话页接收到自定义消息---");
+        toast("收到自定义消息");
         //因为新增`新朋友`这种会话类型
         adapter.bindDatas(getConversations());
         adapter.notifyDataSetChanged();
@@ -220,6 +220,7 @@ public class ConversationFragment extends ParentWithNaviFragment {
     @Subscribe
     public void onEventMainThread(OfflineMessageEvent event){
         //重新刷新列表
+        toast("收到离线消息");
         adapter.bindDatas(getConversations());
         adapter.notifyDataSetChanged();
     }
@@ -231,6 +232,7 @@ public class ConversationFragment extends ParentWithNaviFragment {
      */
     @Subscribe
     public void onEventMainThread(MessageEvent event){
+        toast("收到普通消息");
         //重新获取本地消息并刷新列表
         adapter.bindDatas(getConversations());
         adapter.notifyDataSetChanged();

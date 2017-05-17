@@ -70,7 +70,8 @@
         <service android:name="cn.bmob.newim.core.service.ReConnectService" />
         <service android:name="cn.bmob.newim.core.service.HeartBeatService" />
 
-        <activity android:name=".ui.UserInfoChange"></activity>
+        <activity android:name=".ui.UserInfoChange" />
+        <activity android:name=".bean.ScheduleMessage"></activity>
     </application>
 
 </manifest>
