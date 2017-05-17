@@ -38,8 +38,9 @@ public class UserInfoActivity extends ParentWithNaviActivity {
 
     @Bind(R.id.btn_add_friend)
     Button btn_add_friend;
-    @Bind(R.id.btn_chat)
-    Button btn_chat;
+
+//    @Bind(R.id.btn_chat)
+//    Button btn_chat;
 
     User user;
     BmobIMUserInfo info;
@@ -56,10 +57,10 @@ public class UserInfoActivity extends ParentWithNaviActivity {
         user=(User)getBundle().getSerializable("u");
         if(user.getObjectId().equals(getCurrentUid())){
             btn_add_friend.setVisibility(View.GONE);
-            btn_chat.setVisibility(View.GONE);
+
         }else{
             btn_add_friend.setVisibility(View.VISIBLE);
-            btn_chat.setVisibility(View.VISIBLE);
+
         }
         //构造聊天方的用户信息:传入用户id、用户名和用户头像三个参数
         info = new BmobIMUserInfo(user.getObjectId(),user.getUsername(),user.getAvatar());
@@ -101,13 +102,13 @@ public class UserInfoActivity extends ParentWithNaviActivity {
         });
     }
 
-    @OnClick(R.id.btn_chat)
-    public void onChatClick(View view){
-        //启动一个会话，设置isTransient设置为false,则会在本地数据库的会话列表中先创建（如果没有）与该用户的会话信息，且将用户信息存储到本地的用户表中
-        BmobIMConversation c = BmobIM.getInstance().startPrivateConversation(info,false,null);
-        Bundle bundle = new Bundle();
-        bundle.putSerializable("c", c);
-        startActivity(ChatActivity.class, bundle, false);
-    }
+//    @OnClick(R.id.btn_chat)
+//    public void onChatClick(View view){
+//        //启动一个会话，设置isTransient设置为false,则会在本地数据库的会话列表中先创建（如果没有）与该用户的会话信息，且将用户信息存储到本地的用户表中
+//        BmobIMConversation c = BmobIM.getInstance().startPrivateConversation(info,false,null);
+//        Bundle bundle = new Bundle();
+//        bundle.putSerializable("c", c);
+//        startActivity(ChatActivity.class, bundle, false);
+//    }
 
 }
