@@ -13,7 +13,10 @@ import com.example.iplan.bean.AddFriendMessage;
 import com.example.iplan.bean.ScheduleMessage;
 import com.example.iplan.bean.User;
 
+import java.sql.Array;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import butterknife.Bind;
@@ -129,7 +132,7 @@ public class UserInfoActivity extends ParentWithNaviActivity {
 //        map.put("uid",currentUser.getObjectId());//发送者的uid
         map.put("hour", "22");
         map.put("min", "10");
-        map.put("dowhat", "干XXX");
+        map.put("dowhat", "第一个map");
         msg.setExtraMap(map);
         conversation.sendMessage(msg, new MessageSendListener() {
             @Override

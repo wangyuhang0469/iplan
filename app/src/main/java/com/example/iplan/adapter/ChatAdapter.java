@@ -182,14 +182,19 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
         BmobIMMessage message = msgs.get(position);
         if(message.getMsgType().equals(BmobIMMessageType.IMAGE.getType())){
             return message.getFromId().equals(currentUid) ? TYPE_SEND_IMAGE: TYPE_RECEIVER_IMAGE;
+
         }else if(message.getMsgType().equals(BmobIMMessageType.LOCATION.getType())){
             return message.getFromId().equals(currentUid) ? TYPE_SEND_LOCATION: TYPE_RECEIVER_LOCATION;
+
         }else if(message.getMsgType().equals(BmobIMMessageType.VOICE.getType())){
             return message.getFromId().equals(currentUid) ? TYPE_SEND_VOICE: TYPE_RECEIVER_VOICE;
+
         }else if(message.getMsgType().equals(BmobIMMessageType.TEXT.getType())){
             return message.getFromId().equals(currentUid) ? TYPE_SEND_TXT: TYPE_RECEIVER_TXT;
+
         }else if(message.getMsgType().equals(BmobIMMessageType.VIDEO.getType())){
             return message.getFromId().equals(currentUid) ? TYPE_SEND_VIDEO: TYPE_RECEIVER_VIDEO;
+
         }else if(message.getMsgType().equals("agree")) {//显示欢迎
             return TYPE_AGREE;
         }else{

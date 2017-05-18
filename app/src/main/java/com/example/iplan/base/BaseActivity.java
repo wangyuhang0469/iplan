@@ -107,6 +107,7 @@ public class BaseActivity extends FragmentActivity {
             return null;
     }
 
+
     /**
      * 隐藏软键盘
      */
