@@ -1,5 +1,6 @@
 package com.example.iplan.ui.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -12,7 +13,10 @@ import com.example.iplan.R;
 import com.example.iplan.base.ParentWithNaviFragment;
 import com.example.iplan.bean.User;
 import com.example.iplan.model.UserModel;
+import com.example.iplan.ui.AboutUs;
+import com.example.iplan.ui.FeedBack;
 import com.example.iplan.ui.LoginActivity;
+import com.example.iplan.ui.Share;
 import com.example.iplan.ui.UserInfoActivity;
 
 import butterknife.Bind;
@@ -28,11 +32,19 @@ import cn.bmob.v3.BmobUser;
  */
 public class SetFragment extends ParentWithNaviFragment {
 
-    @Bind(R.id.tv_set_name)
-    TextView tv_set_name;
+//    @Bind(R.id.tv_set_name)
+//    TextView tv_set_name;
+//
+//    @Bind(R.id.layout_info)
+//    RelativeLayout layout_info;
+    @Bind(R.id.layout_about_us)
+    RelativeLayout layout_about_us;
+    @Bind(R.id.layout_share)
+    RelativeLayout layout_share;
+    @Bind(R.id.layout_problems)
+    RelativeLayout layout_problems;
 
-    @Bind(R.id.layout_info)
-    RelativeLayout layout_info;
+
 
     @Override
     protected String title() {
@@ -54,16 +66,39 @@ public class SetFragment extends ParentWithNaviFragment {
         initNaviView();
         ButterKnife.bind(this, rootView);
         String username = UserModel.getInstance().getCurrentUser().getUsername();
-        tv_set_name.setText(TextUtils.isEmpty(username)?"":username);
+        //tv_set_name.setText(TextUtils.isEmpty(username)?"":username);
         return rootView;
     }
 
-    @OnClick(R.id.layout_info)
+//   @OnClick(R.id.layout_info)
+//        public void onInfoClick(View view){
+//            Bundle bundle = new Bundle();
+//            bundle.putSerializable("u", BmobUser.getCurrentUser(User.class));
+//            startActivity(UserInfoActivity.class,bundle);
+//    }
+    //跳转到关于我们页面（对本软件的介绍）
+    @OnClick(R.id.layout_about_us)
     public void onInfoClick(View view){
-        Bundle bundle = new Bundle();
-        bundle.putSerializable("u", BmobUser.getCurrentUser(User.class));
-        startActivity(UserInfoActivity.class,bundle);
+        Intent intent = new Intent();
+        intent.setClass(getActivity(), AboutUs.class);
+        startActivity(intent);
     }
+    //分享
+    @OnClick(R.id.layout_share)
+    public void onShareClick(View view){
+        Intent intent1=new Intent(Intent.ACTION_SEND);
+        intent1.putExtra(Intent.EXTRA_TEXT,"这是iplan APP");
+        intent1.setType("text/plain");
+        startActivity(Intent.createChooser(intent1,"share"));
+    }
+    //常见问题反馈
+    @OnClick(R.id.layout_problems)
+    public void onFeedBackClick(View view){
+        Intent intent = new Intent();
+        intent.setClass(getActivity(), FeedBack.class);
+        startActivity(intent);
+    }
+
 
     @OnClick(R.id.btn_logout)
     public void onLogoutClick(View view){

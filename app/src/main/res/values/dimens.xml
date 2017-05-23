@@ -11,7 +11,7 @@
     <dimen name="text_size_medium">16sp</dimen>
     <dimen name="text_size_large">18sp</dimen>
 
-    <dimen name="height_2">2dip</dimen>
+    <dimen name="height_2">0.5dip</dimen>
     <dimen name="height_line">1dip</dimen>
     <dimen name="height_40">40dip</dimen>
     <dimen name="height_50">50dip</dimen>

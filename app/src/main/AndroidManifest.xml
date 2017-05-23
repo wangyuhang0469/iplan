@@ -71,7 +71,10 @@
         <service android:name="cn.bmob.newim.core.service.HeartBeatService" />
 
         <activity android:name=".ui.UserInfoChange" />
-        <activity android:name=".bean.ScheduleMessage"></activity>
+        <activity android:name=".bean.ScheduleMessage" />
+        <activity android:name=".ui.AboutUs" />
+        <activity android:name=".ui.Share" />
+        <activity android:name=".ui.FeedBack"></activity>
     </application>
 
 </manifest>
