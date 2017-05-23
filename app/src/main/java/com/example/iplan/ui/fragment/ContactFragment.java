@@ -148,6 +148,7 @@ public class ContactFragment extends ParentWithNaviFragment {
                     BmobIMConversation c = BmobIM.getInstance().startPrivateConversation(info, null);
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("c", c);
+                    bundle.putSerializable("userInfo",info);
                     startActivity(ChatActivity.class, bundle);
                 }
             }

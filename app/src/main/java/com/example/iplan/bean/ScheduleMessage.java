@@ -1,5 +1,8 @@
 package com.example.iplan.bean;
 
+import java.util.ArrayList;
+import java.util.Map;
+
 import cn.bmob.newim.bean.BmobIMExtraMessage;
 
 /**
@@ -21,5 +24,6 @@ public class ScheduleMessage extends BmobIMExtraMessage {
         //设置为false,则会保存到指定会话的数据库中
         return true;
     }
+
 
 }
