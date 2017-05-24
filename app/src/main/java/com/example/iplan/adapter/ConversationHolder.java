@@ -52,7 +52,7 @@ public class ConversationHolder extends BaseViewHolder {
           }else if(lastMsg.getMsgType().equals(BmobIMMessageType.LOCATION.getType())){
               tv_recent_msg.setText("[位置]"+content);
           }else{//开发者自定义的消息类型，需要自行处理
-              tv_recent_msg.setText("[未知]");
+              tv_recent_msg.setText("[计划表]");
           }
           tv_recent_time.setText(TimeUtil.getChatTime(false, lastMsg.getCreateTime()));
       }

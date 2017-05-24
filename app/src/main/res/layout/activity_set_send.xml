@@ -36,11 +36,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="dowhat"/>
-    <EditText
-        android:id="@+id/edit_alarm"
+    <Switch
+        android:id="@+id/isAlarm"
+        android:text="闹钟"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="alarm"/>
+        android:textOn="开"
+        android:textOff="关"/>
     <EditText
         android:id="@+id/edit_time"
         android:layout_width="match_parent"

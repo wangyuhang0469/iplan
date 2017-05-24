@@ -1,5 +1,6 @@
 package com.example.iplan.ui;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -31,6 +32,7 @@ import com.example.iplan.adapter.ChatAdapter;
 import com.example.iplan.adapter.OnRecyclerViewListener;
 import com.example.iplan.base.ParentWithNaviActivity;
 import com.example.iplan.bean.ScheduleMessage;
+import com.example.iplan.planclass.Plan;
 import com.example.iplan.util.Util;
 import com.orhanobut.logger.Logger;
 
@@ -280,10 +282,26 @@ public class ChatActivity extends ParentWithNaviActivity implements ObseverListe
 
     @OnClick(R.id.btn_setPlan)
     public void onViewClicked() {
-        info = (BmobIMUserInfo) getBundle().getSerializable("userInfo");
-        Bundle bundle = new Bundle();
-        bundle.putSerializable("userInfo",info);
-        startActivity(SetSendActivity.class, bundle);
+//        sendSchedukeMessage();
+//        info = (BmobIMUserInfo) getBundle().getSerializable("userInfo");
+//        Bundle bundle = new Bundle();
+//        bundle.putSerializable("c",c);
+//        startActivity(SetSendActivity.class, bundle);
+        Intent intent = new Intent(this,SetSendActivity.class);
+        startActivityForResult(intent,0);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode==0 && resultCode==RESULT_OK){
+            Bundle bundle = data.getExtras();
+            Plan a = (Plan) bundle.getSerializable("a");
+            String text =null;
+            if(bundle!=null)
+                text=bundle.getString("second");
+                toast(a.getId());
+        }
     }
 
 
@@ -703,9 +721,9 @@ public class ChatActivity extends ParentWithNaviActivity implements ObseverListe
         //启动一个会话，如果isTransient设置为true,则不会创建在本地会话表中创建记录，
         //设置isTransient设置为false,则会在本地数据库的会话列表中先创建（如果没有）与该用户的会话信息，且将用户信息存储到本地的用户表中
 
-        BmobIMConversation d = BmobIM.getInstance().startPrivateConversation(info, true, null);
-        //这个obtain方法才是真正创建一个管理消息发送的会话
-        BmobIMConversation conversation = BmobIMConversation.obtain(BmobIMClient.getInstance(), d);
+//        BmobIMConversation d = BmobIM.getInstance().startPrivateConversation(info, true, null);
+//        //这个obtain方法才是真正创建一个管理消息发送的会话
+//        BmobIMConversation conversation = BmobIMConversation.obtain(BmobIMClient.getInstance(), d);
         ScheduleMessage msg = new ScheduleMessage();
 //        User currentUser = BmobUser.getCurrentUser(User.class);
         msg.setContent("发送了个时间表给你");//给对方的一个留言信息
@@ -717,16 +735,17 @@ public class ChatActivity extends ParentWithNaviActivity implements ObseverListe
         map.put("min", "111");
         map.put("dowhat", "来自聊天界面的信息");
         msg.setExtraMap(map);
-        conversation.sendMessage(msg, new MessageSendListener() {
-            @Override
-            public void done(BmobIMMessage msg, BmobException e) {
-                if (e == null) {//发送成功
-                    toast("发送计划表成功");
-                } else {//发送失败
-                    toast("发送失败:" + e.getMessage());
-                }
-            }
-        });
+        c.sendMessage(msg, listener);
+//        c.sendMessage(msg, new MessageSendListener() {
+//            @Override
+//            public void done(BmobIMMessage msg, BmobException e) {
+//                if (e == null) {//发送成功
+//                    toast("发送计划表成功");
+//                } else {//发送失败
+//                    toast("发送失败:" + e.getMessage());
+//                }
+//            }
+//        });
     }
     @Override
     protected void onResume() {

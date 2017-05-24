@@ -145,7 +145,7 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
         }else if(viewType ==TYPE_AGREE) {
             return new AgreeHolder(parent.getContext(),parent,onRecyclerViewListener);
         }else{//开发者自定义的其他类型，可自行处理
-            return null;
+            return new SendTextHolder(parent.getContext(), parent,c,onRecyclerViewListener);
         }
     }
 
@@ -198,7 +198,7 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
         }else if(message.getMsgType().equals("agree")) {//显示欢迎
             return TYPE_AGREE;
         }else{
-            return -1;
+            return  message.getFromId().equals(currentUid) ? TYPE_SEND_TXT: TYPE_RECEIVER_TXT;
         }
     }
 
