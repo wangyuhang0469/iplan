@@ -4,7 +4,7 @@ package com.example.iplan.planclass;
  * Created by 王先生 on 2017/5/18.
  */
 
-public class Plan {
+class Plan {
 
 
 

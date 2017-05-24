@@ -1,18 +1,14 @@
 package com.example.iplan.ui;
 
 import android.net.Uri;
-
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.iplan.R;
-import com.example.iplan.base.BaseActivity;
 import com.example.iplan.base.ParentWithNaviActivity;
 import com.example.iplan.bean.ScheduleMessage;
-import com.example.iplan.planclass.Plan;
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.appindexing.Thing;
