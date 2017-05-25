@@ -61,7 +61,6 @@ public class UserInfoChange extends AppCompatActivity {
     }
 
 
-
     @OnClick(R.id.v_top)
     public void onViewClicked() {
     }
