@@ -8,6 +8,7 @@
 
     <include android:id="@+id/ll" layout="@layout/include_navi"/>
 
+
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/sw_refresh"
         android:layout_width="match_parent"
