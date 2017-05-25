@@ -21,7 +21,7 @@
     <RelativeLayout
         android:id="@+id/layout_head"
         android:layout_width="match_parent"
-        android:layout_height="500dp"
+        android:layout_height="540dp"
         android:minHeight="80dp"
         android:paddingLeft="10dp"
         android:paddingRight="10dp" >
@@ -32,10 +32,9 @@
             android:text="qq"
             android:textColor="#444444"
             android:textSize="30dp"
-            android:textStyle="bold"
             android:drawablePadding="10dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginBottom="10dp"
             android:layout_alignParentBottom="true"
             android:layout_toRightOf="@+id/iv_avator"
             android:layout_toEndOf="@+id/iv_avator" />
@@ -56,8 +55,8 @@
             <LinearLayout
                 android:id="@+id/bg_new_friend1"
                 android:layout_width="match_parent"
-                android:layout_height="300dp"
-                android:layout_marginTop="60dp"
+                android:layout_height="350dp"
+                android:layout_marginTop="30dp"
                 android:orientation="vertical"
                 android:background="@drawable/bg_new_friend1"
                 >
@@ -85,6 +84,11 @@
             <!--android:drawablePadding="10dp" />-->
     <!--</RelativeLayout>-->
 
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/height_2"
+                    android:background="@drawable/base_horizontal_line" >
+                </View>
     <RelativeLayout
         android:id="@+id/layout_sex"
         android:layout_width="match_parent"
@@ -110,7 +114,7 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/height_2"
-                    android:background="#999999" >
+                    style="@style/my_view" >
                 </View>
                 <!--android:background="#55999999"-->
     <RelativeLayout
@@ -137,7 +141,7 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/height_2"
-                    android:background="#999999" >
+                    style="@style/my_view" >
                 </View>
 
     <RelativeLayout
@@ -167,13 +171,19 @@
                 </View>
         </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="20dp">
+
+            </LinearLayout>
+
 
         </LinearLayout>
     </ScrollView>
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:background="#ffffff"
+        android:background="#eeeeee"
         android:gravity="bottom"
         android:orientation="horizontal">
 

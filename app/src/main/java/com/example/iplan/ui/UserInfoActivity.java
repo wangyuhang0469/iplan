@@ -77,7 +77,7 @@ public class UserInfoActivity extends ParentWithNaviActivity {
         ImageLoaderFactory.getLoader().loadAvator(iv_avator, user.getAvatar(), R.mipmap.head);
         tv_name.setText(user.getUsername());
 
-    //设置图片透明度
+        //设置图片透明度
         View v = findViewById(R.id.bg_new_friend1);//找到你要设透明背景的layout 的id
         v.getBackground().setAlpha(180);//0~255透明度值
     }

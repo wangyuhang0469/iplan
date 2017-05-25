@@ -10,58 +10,59 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.iplan.R;
+import com.example.iplan.base.ImageLoaderFactory;
+import com.example.iplan.bean.User;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import cn.bmob.newim.bean.BmobIMUserInfo;
 
 public class UserInfoChange extends AppCompatActivity {
 
-    @Bind(R.id.v_top)
-    View vTop;
 
-    @Bind(R.id.tv_left)
-    ImageView tvLeft;
-
-    @Bind(R.id.tv_title)
-    TextView tvTitle;
-
-    @Bind(R.id.tv_right)
-    TextView tvRight;
-    @Bind(R.id.iv_avator)
-    ImageView ivAvator;
-    @Bind(R.id.layout_head)
-    RelativeLayout layoutHead;
-    @Bind(R.id.tv_name)
-    TextView tvName;
-    @Bind(R.id.layout_name)
-    RelativeLayout layoutName;
-    @Bind(R.id.sex)
-    TextView sex;
-    @Bind(R.id.tv_sex)
-    EditText tvSex;
-    @Bind(R.id.layout_sex)
-    RelativeLayout layoutSex;
-    @Bind(R.id.tv_age)
-    TextView tvAge;
-    @Bind(R.id.layout_age)
-    RelativeLayout layoutAge;
-    @Bind(R.id.tv_birth)
-    TextView tvBirth;
-    @Bind(R.id.layout_birth)
-    RelativeLayout layoutBirth;
-    @Bind(R.id.layout_all)
-    LinearLayout layoutAll;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user_info_change);
-        ButterKnife.bind(this);
-    }
+        @Bind(R.id.iv_avator)
+        ImageView iv_avator;
+        @Bind(R.id.tv_name1)
+        TextView tv_name1;
 
 
-    @OnClick(R.id.v_top)
-    public void onViewClicked() {
-    }
+//    @Bind(R.id.btn_chat)
+//    Button btn_chat;
+
+        User user;
+        BmobIMUserInfo info;
+//
+//        @Override
+//        protected String title() {
+//            return "个人资料";
+//        }
+
+        @Override
+        protected void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_user_info_change);
+            ButterKnife.bind(this);
+//            initNaviView();
+//            user = (User) getBundle().getSerializable("u");
+            //构造聊天方的用户信息:传入用户id、用户名和用户头像三个参数
+//            info = new BmobIMUserInfo(user.getObjectId(), user.getUsername(), user.getAvatar());
+//            ImageLoaderFactory.getLoader().loadAvator(iv_avator, user.getAvatar(), R.mipmap.head);
+//            tv_name1.setText(user.getUsername());
+        }
+
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -35,11 +35,10 @@
             <com.example.iplan.ui.CircleImageView
                 android:id="@+id/iv_avator"
                 android:layout_alignParentRight="true"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="35dp"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-
-                android:layout_marginBottom="30dp"
+                android:layout_marginBottom="25dp"
                 android:src="@mipmap/head" />
 
         </LinearLayout>
@@ -67,7 +66,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_marginTop="20dp"
-        android:background="#7fcccccc"
+        android:background="#7fffffff"
         >
 
         //分享
@@ -108,7 +107,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/height_2"
-        android:background="#888888" >
+        style="@style/my_view">
     </View>
 
     <RelativeLayout
@@ -149,7 +148,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/height_2"
-        android:background="#888888" >
+        style="@style/my_view">
     </View>
         //常见问题
     <RelativeLayout
@@ -189,9 +188,49 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/height_2"
-        android:background="@drawable/base_horizontal_line" >
+        style="@style/my_view" >
     </View>
 
+        //常见问题///
+        <RelativeLayout
+            android:id="@+id/layout_pro"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_selector"
+            android:minHeight="50dp"
+            android:padding="10dp" >
+
+            <ImageView
+                android:id="@+id/inf"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/infoback"/>
+
+            <TextView
+                style="@style/style_text_black"
+                android:layout_toRightOf="@+id/inf"
+                android:paddingLeft="10dp"
+                android:layout_centerVertical="true"
+                android:text="@string/set_problems"
+                android:textColor="#444444"/>
+
+            <TextView
+                android:id="@+id/tv_set_pr"
+                style="@style/style_text_black"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:drawablePadding="10dp"
+                android:drawableRight="@mipmap/register_bottom_arrow" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_2"
+            android:background="@drawable/base_horizontal_line" >
+        </View>
 
 
     <RelativeLayout
@@ -366,7 +405,7 @@
         android:layout_height="45dp"
         android:layout_marginLeft="@dimen/activity_vertical_margin"
         android:layout_marginRight="@dimen/activity_vertical_margin"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="30dp"
         android:text="@string/logout" />
 
         </LinearLayout>
