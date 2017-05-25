@@ -10,19 +10,23 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.iplan.R;
+import com.example.iplan.base.ImageLoaderFactory;
 import com.example.iplan.base.ParentWithNaviFragment;
 import com.example.iplan.bean.User;
 import com.example.iplan.model.UserModel;
 import com.example.iplan.ui.AboutUs;
+import com.example.iplan.ui.CircleImageView;
 import com.example.iplan.ui.FeedBack;
 import com.example.iplan.ui.LoginActivity;
 import com.example.iplan.ui.Share;
 import com.example.iplan.ui.UserInfoActivity;
+import com.example.iplan.ui.UserInfoChange;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import cn.bmob.newim.BmobIM;
+import cn.bmob.newim.bean.BmobIMUserInfo;
 import cn.bmob.v3.BmobUser;
 
 /**设置
@@ -32,17 +36,29 @@ import cn.bmob.v3.BmobUser;
  */
 public class SetFragment extends ParentWithNaviFragment {
 
-//    @Bind(R.id.tv_set_name)
-//    TextView tv_set_name;
+    @Bind(R.id.tv_set_name)
+    TextView tv_set_name;
 //
 //    @Bind(R.id.layout_info)
 //    RelativeLayout layout_info;
+
+    @Bind(R.id.iv_avator)
+    CircleImageView iv_avator;
+
+//    @Bind(R.id.tv_name)
+//    TextView tv_name;
+
     @Bind(R.id.layout_about_us)
     RelativeLayout layout_about_us;
+
     @Bind(R.id.layout_share)
     RelativeLayout layout_share;
+
     @Bind(R.id.layout_problems)
     RelativeLayout layout_problems;
+
+    User user;
+    BmobIMUserInfo info;
 
 
 
@@ -50,6 +66,7 @@ public class SetFragment extends ParentWithNaviFragment {
     protected String title() {
         return "设置";
     }
+
 
     public static SetFragment newInstance() {
         SetFragment fragment = new SetFragment();
@@ -66,7 +83,7 @@ public class SetFragment extends ParentWithNaviFragment {
         initNaviView();
         ButterKnife.bind(this, rootView);
         String username = UserModel.getInstance().getCurrentUser().getUsername();
-        //tv_set_name.setText(TextUtils.isEmpty(username)?"":username);
+        tv_set_name.setText(TextUtils.isEmpty(username)?"":username);
         return rootView;
     }
 
@@ -83,6 +100,15 @@ public class SetFragment extends ParentWithNaviFragment {
         intent.setClass(getActivity(), AboutUs.class);
         startActivity(intent);
     }
+
+    //跳转到关于用户资料页
+    @OnClick(R.id.iv_avator)
+    public void onUserInfoClick(View view){
+        Intent intent = new Intent();
+        intent.setClass(getActivity(), UserInfoChange.class);
+        startActivity(intent);
+    }
+
     //分享
     @OnClick(R.id.layout_share)
     public void onShareClick(View view){

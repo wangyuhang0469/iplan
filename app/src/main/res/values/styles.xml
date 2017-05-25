@@ -69,6 +69,7 @@
         <item name="android:textColor">@color/color_1e1e1e</item>
     </style>
 
+
     <style name="chat_content_date_style">
         <item name="android:minHeight">50dp</item>
         <item name="android:gravity">left|center</item>

@@ -2,16 +2,17 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/yourname"
+    android:background="@drawable/bg_my"
     android:orientation="vertical" >
 
-    <include layout="@layout/include_navi" />
+    <include layout="@layout/include_navi"
+        android:visibility="gone"/>
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="2500dp">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="2500dp"
             android:orientation="vertical">
 
     <RelativeLayout
@@ -23,6 +24,7 @@
         android:paddingRight="10dp" >
 
         <LinearLayout
+            android:id="@+id/iv_picture"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
@@ -33,15 +35,30 @@
             <com.example.iplan.ui.CircleImageView
                 android:id="@+id/iv_avator"
                 android:layout_alignParentRight="true"
-                android:layout_width="75dp"
-                android:layout_height="75dp"
-                android:layout_alignParentLeft="true"
-                android:layout_marginTop="35dp"
-                android:layout_marginBottom="55dp"
-                android:layout_marginLeft="@dimen/margin_16"
+                android:layout_marginTop="30dp"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+
+                android:layout_marginBottom="30dp"
                 android:src="@mipmap/head" />
 
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_set_name"
+            style="@style/style_text_black"
+            android:textColor="#444444"
+            android:textSize="20dp"
+            android:text="ww"
+            android:layout_below="@id/iv_picture"
+            android:layout_alignBaseline="@id/iv_picture"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="30dp"
+            android:layout_marginTop="10dp"
+            android:drawablePadding="10dp"
+            />
+        <!--android:drawableRight="@mipmap/register_bottom_arrow"-->
+
     </RelativeLayout>
 
     <LinearLayout
@@ -49,9 +66,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:background="#7f444444"
+        android:layout_marginTop="20dp"
+        android:background="#7fcccccc"
         >
-
 
         //分享
     <RelativeLayout
@@ -60,6 +77,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/btn_selector"
         android:minHeight="50dp"
+
         android:padding="10dp" >
         <ImageView
             android:id="@+id/share_pic"
@@ -75,7 +93,7 @@
             android:layout_centerVertical="true"
             android:text="@string/set_share"
             android:paddingLeft="10dp"
-            android:textColor="#ffffff"/>
+            android:textColor="#444444"/>
 
         <TextView
             android:id="@+id/tv_set_share"
@@ -90,7 +108,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/height_2"
-        android:background="@drawable/base_horizontal_line" >
+        android:background="#888888" >
     </View>
 
     <RelativeLayout
@@ -116,7 +134,7 @@
             android:paddingLeft="10dp"
             android:layout_centerVertical="true"
             android:text="@string/set_about_us"
-            android:textColor="#ffffff"/>
+            android:textColor="#444444"/>
 
         <TextView
             android:id="@+id/tv_set_about_us"
@@ -131,7 +149,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/height_2"
-        android:background="@drawable/base_horizontal_line" >
+        android:background="#888888" >
     </View>
         //常见问题
     <RelativeLayout
@@ -156,7 +174,7 @@
             android:paddingLeft="10dp"
             android:layout_centerVertical="true"
             android:text="@string/set_problems"
-            android:textColor="#ffffff"/>
+            android:textColor="#444444"/>
 
         <TextView
             android:id="@+id/tv_set_problems"
@@ -346,10 +364,10 @@
         style="@style/style_button_logout"
         android:layout_width="fill_parent"
         android:layout_height="45dp"
-        android:layout_margin="@dimen/activity_vertical_margin"
+        android:layout_marginLeft="@dimen/activity_vertical_margin"
+        android:layout_marginRight="@dimen/activity_vertical_margin"
+        android:layout_marginTop="50dp"
         android:text="@string/logout" />
-
-
 
         </LinearLayout>
     </ScrollView>
