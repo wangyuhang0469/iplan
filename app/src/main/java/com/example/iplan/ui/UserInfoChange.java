@@ -60,6 +60,8 @@ public class UserInfoChange extends AppCompatActivity {
         ButterKnife.bind(this);
     }
 
+
+
     @OnClick(R.id.v_top)
     public void onViewClicked() {
     }
