@@ -1,14 +1,16 @@
 package com.example.iplan.planclass;
 
+import java.io.Serializable;
+
 /**
  * Created by 王先生 on 2017/5/18.
  */
 
-class Plan {
+public class Plan implements Serializable {
 
 
 
-    private Long id;
+    private int id;
     private int dayOfMonth;
     private int hour;
     private int min;
@@ -18,18 +20,18 @@ class Plan {
 
 //    public Plan(Long id,int dayOfMonth,){}
 
-    public Plan(Long id){
+    public Plan(int id){
         this.id = id;
     };
 
-    public Plan(Long id,int dayOfMonth,int hour,int min,String dowhat,boolean alarm,Long time){
+    public Plan(int id,int dayOfMonth,int hour,int min,String dowhat,boolean alarm){
         this.id=id;
         this.dayOfMonth=dayOfMonth;
         this.hour=hour;
         this.min=min;
-        this.alarm=alarm;
         this.dowhat=dowhat;
-        this.time=time;
+        this.alarm=alarm;
+
     }
 
 
@@ -42,11 +44,11 @@ class Plan {
         this.dayOfMonth = dayOfMonth;
     }
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
     public int getHour() {

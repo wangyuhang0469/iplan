@@ -1,18 +1,26 @@
 package com.example.iplan.ui;
 
+import android.content.Intent;
 import android.net.Uri;
+
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Switch;
 
 import com.example.iplan.R;
+import com.example.iplan.adapter.ChatAdapter;
+import com.example.iplan.base.BaseActivity;
 import com.example.iplan.base.ParentWithNaviActivity;
 import com.example.iplan.bean.ScheduleMessage;
+import com.example.iplan.planclass.Plan;
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.appindexing.Thing;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.orhanobut.logger.Logger;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -40,8 +48,8 @@ public class SetSendActivity extends ParentWithNaviActivity {
     EditText editMin;
     @Bind(R.id.edit_dowhat)
     EditText editDowhat;
-    @Bind(R.id.edit_alarm)
-    EditText editAlarm;
+    @Bind(R.id.isAlarm)
+    Switch isAlarm;
     @Bind(R.id.edit_time)
     EditText editTime;
     @Bind(R.id.btn_add)
@@ -53,14 +61,13 @@ public class SetSendActivity extends ParentWithNaviActivity {
      * See https://g.co/AppIndexing/AndroidStudio for more information.
      */
     private GoogleApiClient client;
-    private BmobIMUserInfo info ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_set_send);
         ButterKnife.bind(this);
-        info = (BmobIMUserInfo) getBundle().getSerializable("userInfo");
+//        info = (BmobIMUserInfo) getBundle().getSerializable("userInfo");
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
@@ -73,9 +80,21 @@ public class SetSendActivity extends ParentWithNaviActivity {
             case R.id.btn_add:
                 break;
             case R.id.btn_send:
-//                Plan a = new Plan(Long.parseLong(editId.getText().toString()),Integer.parseInt(editDayOfMonth.getText().toString(),
-//                        Integer.parseInt(editHour.getText().toString(),Integer.parseInt(editMin.getText().toString(),);
-                sendSchedukeMessage();
+                Plan a = new Plan(Integer.parseInt(editId.getText().toString()),
+                        Integer.parseInt(editDayOfMonth.getText().toString()),
+                        Integer.parseInt(editHour.getText().toString()),
+                        Integer.parseInt(editMin.getText().toString()),
+                        editDowhat.getText().toString(),
+                        isAlarm.isChecked());
+                Intent intent =getIntent();
+                //这里使用bundle绷带来传输数据
+                Bundle bundle =new Bundle();
+                //传输的内容仍然是键值对的形式
+                bundle.putString("second","hello world from secondActivity!");//回发的消息,hello world from secondActivity!
+                bundle.putSerializable("a", a);
+                intent.putExtras(bundle);
+                setResult(RESULT_OK,intent);
+                finish();
                 break;
         }
     }
@@ -96,35 +115,8 @@ public class SetSendActivity extends ParentWithNaviActivity {
                 .build();
     }
 
-    private void sendSchedukeMessage() {
-        //启动一个会话，如果isTransient设置为true,则不会创建在本地会话表中创建记录，
-        //设置isTransient设置为false,则会在本地数据库的会话列表中先创建（如果没有）与该用户的会话信息，且将用户信息存储到本地的用户表中
 
-        BmobIMConversation d = BmobIM.getInstance().startPrivateConversation(info, true, null);
-        //这个obtain方法才是真正创建一个管理消息发送的会话
-        BmobIMConversation conversation = BmobIMConversation.obtain(BmobIMClient.getInstance(), d);
-        ScheduleMessage msg = new ScheduleMessage();
-//        User currentUser = BmobUser.getCurrentUser(User.class);
-        msg.setContent("发送了个时间表给你");//给对方的一个留言信息
-        Map<String, Object> map = new HashMap<>();
-//        map.put("name", currentUser.getUsername());//发送者姓名，这里只是举个例子，其实可以不需要传发送者的信息过去
-//        map.put("avatar",currentUser.getAvatar());//发送者的头像
-//        map.put("uid",currentUser.getObjectId());//发送者的uid
-        map.put("hour", "999");
-        map.put("min", "111");
-        map.put("dowhat", "来自聊天界面的信息");
-        msg.setExtraMap(map);
-        conversation.sendMessage(msg, new MessageSendListener() {
-            @Override
-            public void done(BmobIMMessage msg, BmobException e) {
-                if (e == null) {//发送成功
-                    toast("发送计划表成功");
-                } else {//发送失败
-                    toast("发送失败:" + e.getMessage());
-                }
-            }
-        });
-    }
+
     @Override
     public void onStart() {
         super.onStart();
@@ -150,4 +142,6 @@ public class SetSendActivity extends ParentWithNaviActivity {
     protected String title() {
         return "发送计划表";
     }
+
+
 }
