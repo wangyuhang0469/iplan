@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.iplan.base.ImageLoaderFactory;
+import com.example.iplan.ui.CircleImageView;
 
 
 /**

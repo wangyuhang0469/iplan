@@ -80,5 +80,5 @@ android {
         compile files('libs/ezmorph-1.0.3.jar')
         compile files('libs/json-lib-2.2.3-jdk15.jar')
     }
-//    buildToolsVersion '25.0.0'
+
 }
