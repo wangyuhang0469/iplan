@@ -13,6 +13,7 @@ import cn.bmob.v3.BmobUser;
 public class User extends BmobUser {
 
     private String avatar;
+    private String sex;
 
     public User(){}
 
@@ -26,7 +27,12 @@ public class User extends BmobUser {
         return avatar;
     }
 
+
+
     public void setAvatar(String avatar) {
         this.avatar = avatar;
     }
+
+
+
 }
