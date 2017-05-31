@@ -121,8 +121,8 @@ public class HomepageFragment extends ParentWithNaviFragment {
     }
     private List<Map<String, Object>> getData() {
         dbHelper = new MyDatabaseHelper(getActivity(),"Time.db",null,2);
-        SQLiteDatabase db = dbHelper.getReadableDatabase();
-        Cursor cursor = db.rawQuery("select * from Time",null);
+        SQLiteDatabase DB = dbHelper.getReadableDatabase();
+        Cursor cursor = DB.rawQuery("select * from Time",null);
         //清空list
         list.clear();
         //查询到的数据添加到list集合
