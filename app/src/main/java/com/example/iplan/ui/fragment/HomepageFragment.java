@@ -42,13 +42,9 @@ public class HomepageFragment extends ParentWithNaviFragment {
     @Bind(R.id.button1)
     Button button1;
     private MyDatabaseHelper dbHelper;
-    private ListView listView;
     private List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
     private SimpleAdapter simpleAdapter;
 
-    public FragmentTransaction mFragmentTransaction;
-    public FragmentManager fragmentManager;
-    public String curFragmentTag = "";
 
     //    @Bind(R.id.hour)
 //    EditText hour;

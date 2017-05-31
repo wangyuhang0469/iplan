@@ -284,9 +284,8 @@ public class ChatActivity extends ParentWithNaviActivity implements ObseverListe
         if(requestCode==0 && resultCode==RESULT_OK){
             Bundle bundle = data.getExtras();
             Plan a = (Plan) bundle.getSerializable("a");
-            String text =null;
             if(bundle!=null)
-                text=bundle.getString("second");
+                sendSchedukeMessage(a);
                 toast(a.getId());
         }
     }
@@ -713,7 +712,7 @@ public class ChatActivity extends ParentWithNaviActivity implements ObseverListe
         }
     }
 
-    private void sendSchedukeMessage() {
+    private void sendSchedukeMessage(Plan a) {
         //启动一个会话，如果isTransient设置为true,则不会创建在本地会话表中创建记录，
         //设置isTransient设置为false,则会在本地数据库的会话列表中先创建（如果没有）与该用户的会话信息，且将用户信息存储到本地的用户表中
 
@@ -727,10 +726,11 @@ public class ChatActivity extends ParentWithNaviActivity implements ObseverListe
 //        map.put("name", currentUser.getUsername());//发送者姓名，这里只是举个例子，其实可以不需要传发送者的信息过去
 //        map.put("avatar",currentUser.getAvatar());//发送者的头像
 //        map.put("uid",currentUser.getObjectId());//发送者的uid
-        map.put("hour", "999");
-        map.put("min", "111");
-        map.put("dowhat", "来自聊天界面的信息");
+        map.put("hour", a.getHour());
+//        map.put("min", "111");
+        map.put("dowhat", a.getDowhat());
         msg.setExtraMap(map);
+        toast("发送函数生效");
         c.sendMessage(msg, listener);
 //        c.sendMessage(msg, new MessageSendListener() {
 //            @Override

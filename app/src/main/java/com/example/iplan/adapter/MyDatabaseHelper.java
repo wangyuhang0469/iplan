@@ -5,6 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.Toast;
 
+import com.example.iplan.DemoMessageHandler;
 import com.example.iplan.ui.fragment.HomepageFragment;
 
 /**
@@ -18,6 +19,9 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         super(context,name,factory,version);
         mContext = context;
     }
+
+
+
     @Override
     public void onCreate(SQLiteDatabase db){
         db.execSQL(CREATE_TIME);
