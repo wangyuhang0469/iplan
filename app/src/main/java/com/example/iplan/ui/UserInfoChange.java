@@ -2,6 +2,7 @@ package com.example.iplan.ui;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 import com.example.iplan.R;
 import com.example.iplan.base.ImageLoaderFactory;
 import com.example.iplan.bean.User;
+import com.example.iplan.model.UserModel;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -43,12 +45,10 @@ public class UserInfoChange extends AppCompatActivity {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_user_info_change);
             ButterKnife.bind(this);
-//            initNaviView();
-//            user = (User) getBundle().getSerializable("u");
-            //构造聊天方的用户信息:传入用户id、用户名和用户头像三个参数
-//            info = new BmobIMUserInfo(user.getObjectId(), user.getUsername(), user.getAvatar());
-//            ImageLoaderFactory.getLoader().loadAvator(iv_avator, user.getAvatar(), R.mipmap.head);
-//            tv_name1.setText(user.getUsername());
+
+            String username = UserModel.getInstance().getCurrentUser().getUsername();
+            tv_name1.setText(TextUtils.isEmpty(username)?"":username);
+
         }
 
 

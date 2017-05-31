@@ -1,4 +1,4 @@
-package com.example.iplan.ui;
+package com.example.iplan.ui.fragment;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

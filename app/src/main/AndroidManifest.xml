@@ -72,15 +72,22 @@
 
         <activity android:name=".ui.UserInfoChange" />
         <activity android:name=".bean.ScheduleMessage" />
-        <activity android:name=".ui.AboutUs" />
+        <activity android:name=".ui.fragment.AboutUs" />
         <activity android:name=".ui.Share" />
         <activity android:name=".ui.FeedBack"></activity>
+        <activity android:name=".ui.SendTime"/>
+        <activity android:name=".ui.FeedBack" />
         <activity android:name=".bean.ScheduleMessage" />
-        <activity android:name=".ui.SetSendActivity"></activity><!-- ATTENTION: This was auto-generated to add Google Play services to your project for
-     App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information. -->
+        <activity android:name=".ui.SetSendActivity" />
+        <!--
+ ATTENTION: This was auto-generated to add Google Play services to your project for
+     App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information.
+        -->
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
+
+        <activity android:name=".ui.MakeUserInfo"></activity>
     </application>
 
 </manifest>
