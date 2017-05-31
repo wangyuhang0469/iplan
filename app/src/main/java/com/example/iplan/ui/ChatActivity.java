@@ -112,8 +112,6 @@ public class ChatActivity extends ParentWithNaviActivity implements ObseverListe
     TextView tv_voice_tips;
     @Bind(R.id.iv_record)
     ImageView iv_record;
-    @Bind(R.id.btn_setPlan)
-    Button btnSetPlan;
     private Drawable[] drawable_Anims;// 话筒动画
     BmobRecordManager recordManager;
 
@@ -280,17 +278,6 @@ public class ChatActivity extends ParentWithNaviActivity implements ObseverListe
         });
     }
 
-    @OnClick(R.id.btn_setPlan)
-    public void onViewClicked() {
-//        sendSchedukeMessage();
-//        info = (BmobIMUserInfo) getBundle().getSerializable("userInfo");
-//        Bundle bundle = new Bundle();
-//        bundle.putSerializable("c",c);
-//        startActivity(SetSendActivity.class, bundle);
-        Intent intent = new Intent(this,SetSendActivity.class);
-        startActivityForResult(intent,0);
-    }
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -449,20 +436,29 @@ public class ChatActivity extends ParentWithNaviActivity implements ObseverListe
 
     @OnClick(R.id.tv_picture)
     public void onPictureClick(View view) {
+
+//        sendSchedukeMessage();
+//        info = (BmobIMUserInfo) getBundle().getSerializable("userInfo");
+//        Bundle bundle = new Bundle();
+//        bundle.putSerializable("c",c);
+//        startActivity(SetSendActivity.class, bundle);
+            Intent intent = new Intent(this,SetSendActivity.class);
+            startActivityForResult(intent,0);
+        }
+//        -------------------------
 //        sendLocalImageMessage();
 //        sendOtherMessage();
-        sendVideoMessage();
-    }
+//        sendVideoMessage();
 
-    @OnClick(R.id.tv_camera)
-    public void onCameraClick(View view) {
-        sendRemoteImageMessage();
-    }
-
-    @OnClick(R.id.tv_location)
-    public void onLocationClick(View view) {
-        sendLocationMessage();
-    }
+//    @OnClick(R.id.tv_camera)
+//    public void onCameraClick(View view) {
+//        sendRemoteImageMessage();
+//    }
+//
+//    @OnClick(R.id.tv_location)
+//    public void onLocationClick(View view) {
+//        sendLocationMessage();
+//    }
 
     /**
      * 根据是否点击笑脸来显示文本输入框的状态

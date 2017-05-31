@@ -18,7 +18,7 @@
             <com.example.iplan.ui.CircleImageView
                 android:layout_width="50.0dip"
                 android:layout_height="50.0dip"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="15dp"
                 android:padding="@dimen/margin_3"
                 android:contentDescription="@string/action_settings"
                 android:src="@mipmap/new_friends_icon" />

@@ -51,10 +51,5 @@
                 android:textSize="14sp" />
         </RelativeLayout>
     </FrameLayout>
-    <Button
-        android:id="@+id/btn_setPlan"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="给他安排任务"/>
     <include layout="@layout/include_chat_bottom_bar"/>
 </LinearLayout>
