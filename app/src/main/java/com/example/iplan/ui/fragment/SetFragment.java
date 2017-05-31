@@ -19,7 +19,6 @@ import com.example.iplan.base.ImageLoaderFactory;
 import com.example.iplan.base.ParentWithNaviFragment;
 import com.example.iplan.bean.User;
 import com.example.iplan.model.UserModel;
-import com.example.iplan.ui.AboutUs;
 import com.example.iplan.ui.CircleImageView;
 import com.example.iplan.ui.FeedBack;
 import com.example.iplan.ui.LoginActivity;
