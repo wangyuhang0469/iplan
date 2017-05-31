@@ -40,8 +40,9 @@ public class SendTime extends Activity {
                 db.insert("Time",null,values);
                 values.clear();
 
-                Intent intent = new Intent(SendTime.this,MainActivity.class);
-                startActivity(intent);
+                Intent intent =getIntent();
+                setResult(RESULT_OK,intent);
+                finish();
             }
         });
     }
