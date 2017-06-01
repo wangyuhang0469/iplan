@@ -83,8 +83,6 @@ public class SetSendActivity extends ParentWithNaviActivity {
                 Intent intent = getIntent();
                 //这里使用bundle绷带来传输数据
                 Bundle bundle = new Bundle();
-                //传输的内容仍然是键值对的形式
-                bundle.putString("second", "hello world from secondActivity!");//回发的消息,hello world from secondActivity!
                 bundle.putSerializable("a", a);
                 intent.putExtras(bundle);
                 setResult(RESULT_OK, intent);

@@ -138,15 +138,21 @@ public class DemoMessageHandler extends BmobIMMessageHandler {
             //这里应该也需要做下校验--来检测下是否已经同意过该好友请求，我这里省略了
             showAgreeNotify(info, agree);
         }else if (type.equals("Schedule")){
+            Toast.makeText(context, "接收到计划表：" + msg.getMsgType() + "," + msg.getContent() + "," + msg.getExtra(), Toast.LENGTH_SHORT).show();
             String a=msg.getExtra();
             JSONObject jsonobject = JSONObject.fromObject(a);
-            String hour = jsonobject.getString("hour");
-            String dowhat = jsonobject.getString("dowhat");
             MyDatabaseHelper dbHelper=new MyDatabaseHelper(this.context,"Time.db",null,2);
             SQLiteDatabase db = dbHelper.getWritableDatabase();
             ContentValues values = new ContentValues();
-            values.put("time",hour);
-            values.put("thing",dowhat);
+            values.put("who",jsonobject.getString("who"));
+            values.put("year",jsonobject.getString("year"));
+            values.put("month",jsonobject.getString("month"));
+            values.put("dayOfMonth",jsonobject.getString("dayOfMonth"));
+            values.put("time",jsonobject.getString("hour"));
+            values.put("min",jsonobject.getString("min"));
+            values.put("thing",jsonobject.getString("dowhat"));
+            values.put("alarm",jsonobject.getString("alarm"));
+            values.put("createTime",jsonobject.getString("createTime"));
             db.insert("Time",null,values);
             values.clear();
         }

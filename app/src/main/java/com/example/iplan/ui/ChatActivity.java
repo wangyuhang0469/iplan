@@ -712,13 +712,8 @@ public class ChatActivity extends ParentWithNaviActivity implements ObseverListe
         }
     }
 
-    private void sendSchedukeMessage(Plan a) {
-        //启动一个会话，如果isTransient设置为true,则不会创建在本地会话表中创建记录，
-        //设置isTransient设置为false,则会在本地数据库的会话列表中先创建（如果没有）与该用户的会话信息，且将用户信息存储到本地的用户表中
+    public void sendSchedukeMessage(Plan a) {
 
-//        BmobIMConversation d = BmobIM.getInstance().startPrivateConversation(info, true, null);
-//        //这个obtain方法才是真正创建一个管理消息发送的会话
-//        BmobIMConversation conversation = BmobIMConversation.obtain(BmobIMClient.getInstance(), d);
         ScheduleMessage msg = new ScheduleMessage();
 //        User currentUser = BmobUser.getCurrentUser(User.class);
         msg.setContent("发送了个时间表给你");//给对方的一个留言信息
@@ -726,11 +721,16 @@ public class ChatActivity extends ParentWithNaviActivity implements ObseverListe
 //        map.put("name", currentUser.getUsername());//发送者姓名，这里只是举个例子，其实可以不需要传发送者的信息过去
 //        map.put("avatar",currentUser.getAvatar());//发送者的头像
 //        map.put("uid",currentUser.getObjectId());//发送者的uid
+        map.put("who", a.getWho());
+        map.put("year", a.getYear());
+        map.put("month", a.getMonth());
+        map.put("dayOfMonth", a.getDayOfMonth());
         map.put("hour", a.getHour());
-//        map.put("min", "111");
+        map.put("min", a.getMin());
         map.put("dowhat", a.getDowhat());
+        map.put("alarm", a.isAlarm());
+        map.put("createTime", a.getTime());
         msg.setExtraMap(map);
-        toast("发送函数生效");
         c.sendMessage(msg, listener);
 //        c.sendMessage(msg, new MessageSendListener() {
 //            @Override
