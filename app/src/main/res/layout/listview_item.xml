@@ -43,7 +43,7 @@
     <View
         android:id="@+id/view_2"
         android:layout_width="1dp"
-        android:layout_height="100dp"
+        android:layout_height="50dp"
         android:layout_below="@+id/image"
         android:layout_marginLeft="71dp"
         android:background="#A6A6A6" />

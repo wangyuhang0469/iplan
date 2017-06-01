@@ -204,6 +204,7 @@ public class ContactFragment extends ParentWithNaviFragment {
     @Subscribe
     public void onEventMainThread(RefreshEvent event) {
         //重新刷新列表
+        toast("联系人界面接收到自定义消息");
         log("---联系人界面接收到自定义消息---");
         adapter.notifyDataSetChanged();
     }

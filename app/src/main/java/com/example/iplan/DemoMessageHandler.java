@@ -1,11 +1,14 @@
 package com.example.iplan;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.widget.Toast;
 
+import com.example.iplan.adapter.MyDatabaseHelper;
 import com.example.iplan.bean.AddFriendMessage;
 import com.example.iplan.bean.AgreeAddFriendMessage;
 import com.example.iplan.bean.User;
@@ -16,6 +19,8 @@ import com.example.iplan.model.UserModel;
 import com.example.iplan.model.i.UpdateCacheListener;
 import com.example.iplan.ui.MainActivity;
 import com.orhanobut.logger.Logger;
+
+import net.sf.json.JSONObject;
 
 import org.greenrobot.eventbus.EventBus;
 
@@ -32,6 +37,9 @@ import cn.bmob.newim.listener.BmobIMMessageHandler;
 import cn.bmob.newim.notification.BmobNotificationManager;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.SaveListener;
+
+import static android.R.id.list;
+
 
 /**
  * 消息接收器
@@ -128,8 +136,38 @@ public class DemoMessageHandler extends BmobIMMessageHandler {
             addFriend(agree.getFromId());//添加消息的发送方为好友
             //这里应该也需要做下校验--来检测下是否已经同意过该好友请求，我这里省略了
             showAgreeNotify(info, agree);
-        } else {
+        }else if (type.equals("Schedule")){
+            Toast.makeText(context, "接收到计划表：" + msg.getMsgType() + "," + msg.getContent() + "," + msg.getExtra(), Toast.LENGTH_SHORT).show();
+            String a=msg.getExtra();
+            JSONObject jsonobject = JSONObject.fromObject(a);
+            MyDatabaseHelper dbHelper=new MyDatabaseHelper(this.context,"Time.db",null,2);
+            SQLiteDatabase db = dbHelper.getWritableDatabase();
+            ContentValues values = new ContentValues();
+            values.put("who",jsonobject.getString("who"));
+            values.put("year",jsonobject.getString("year"));
+            values.put("month",jsonobject.getString("month"));
+            values.put("dayOfMonth",jsonobject.getString("dayOfMonth"));
+            values.put("hour",jsonobject.getString("hour"));
+            values.put("min",jsonobject.getString("min"));
+            values.put("dowhat",jsonobject.getString("dowhat"));
+            values.put("alarm",jsonobject.getString("alarm"));
+            values.put("createTime",jsonobject.getString("createTime"));
+            db.insert("Time",null,values);
+            values.clear();
+        }
+        else {
             Toast.makeText(context, "接收到的自定义消息：" + msg.getMsgType() + "," + msg.getContent() + "," + msg.getExtra(), Toast.LENGTH_SHORT).show();
+//            String a=msg.getExtra();
+//            JSONObject jsonobject = JSONObject.fromObject(a);
+//            String hour = jsonobject.getString("hour");
+//            String dowhat = jsonobject.getString("dowhat");
+//             MyDatabaseHelper dbHelper=new MyDatabaseHelper(this.context,"Time.db",null,2);
+//            SQLiteDatabase db = dbHelper.getWritableDatabase();
+//            ContentValues values = new ContentValues();
+//            values.put("time",hour);
+//            values.put("thing",dowhat);
+//            db.insert("Time",null,values);
+//            values.clear();
         }
     }
 

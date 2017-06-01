@@ -3,15 +3,57 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
     <EditText
-        android:id="@+id/ET"
+        android:id="@+id/edit_who"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:bufferType="editable"/>
+        android:hint="who"/>
     <EditText
-        android:id="@+id/ET1"
+        android:id="@+id/edit_year"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:bufferType="spannable"/>
+        android:hint="year"
+        android:text="2017"/>
+    <EditText
+        android:id="@+id/edit_month"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="month"
+        android:text="6"/>
+    <EditText
+        android:id="@+id/edit_dayOfMonth"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="dayOfMonth"
+        android:text="1"/>
+    <EditText
+        android:id="@+id/edit_hour"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="hour"/>
+    <EditText
+        android:id="@+id/edit_min"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="min"
+        android:text="59"/>
+    <EditText
+        android:id="@+id/edit_dowhat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="dowhat"/>
+    <Switch
+        android:id="@+id/isAlarm"
+        android:text="闹钟"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textOn="开"
+        android:textOff="关"/>
+    <EditText
+        android:id="@+id/edit_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="time"
+        android:text="闹钟"/>
     <Button
         android:id="@+id/send"
         android:layout_width="wrap_content"
