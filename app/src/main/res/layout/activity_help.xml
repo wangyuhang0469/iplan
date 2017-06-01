@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
+    android:background="#ffffff"
+    tools:context="com.example.iplan.ui.Help">
+    
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:textColor="#000000"
+        android:text="如何添加新朋友？"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_2"
+        style="@style/my_view" >
+    </View>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:lineSpacingExtra="5dp"
+        android:layout_marginTop="10dp"
+        android:textColor="#000000"
+        android:text="1、在会话（好友）页面右上角有一个加号，点击加号按钮\n2、进入搜索页面后，输入你要添加朋友的名称，点击搜索，进行查看\n3、进入好友信息页面后可以点击添加好友，发送添加好友请求（发送时间表给他安排任务）"/>
+    
+    
+
+</LinearLayout>

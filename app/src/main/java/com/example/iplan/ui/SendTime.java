@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 
 import com.example.iplan.R;
 import com.example.iplan.adapter.MyDatabaseHelper;
@@ -26,6 +28,7 @@ public class SendTime extends Activity {
     EditText editDayOfMonth;
     private MyDatabaseHelper dbHelper;
     Button button;
+    ImageView button_back;
     EditText et;
     EditText et1;
 
@@ -58,6 +61,13 @@ public class SendTime extends Activity {
 
                 Intent intent = getIntent();
                 setResult(RESULT_OK, intent);
+                finish();
+            }
+        });
+        button_back = (ImageView)findViewById(R.id.back);
+        button_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
                 finish();
             }
         });

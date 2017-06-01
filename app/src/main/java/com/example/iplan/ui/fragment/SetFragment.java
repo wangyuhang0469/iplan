@@ -1,8 +1,11 @@
 package com.example.iplan.ui.fragment;
 
 import android.annotation.TargetApi;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -21,7 +24,9 @@ import com.example.iplan.bean.User;
 import com.example.iplan.model.UserModel;
 import com.example.iplan.ui.CircleImageView;
 import com.example.iplan.ui.FeedBack;
+import com.example.iplan.ui.Help;
 import com.example.iplan.ui.LoginActivity;
+import com.example.iplan.ui.MainActivity;
 import com.example.iplan.ui.UserInfoChange;
 
 import butterknife.Bind;
@@ -59,6 +64,10 @@ public class SetFragment extends ParentWithNaviFragment {
 
     @Bind(R.id.layout_problems)
     RelativeLayout layout_problems;
+
+    @Bind(R.id.layout_help)
+    RelativeLayout layout_help;
+
 
     User user;
     BmobIMUserInfo info;
@@ -129,16 +138,68 @@ public class SetFragment extends ParentWithNaviFragment {
         Intent intent = new Intent();
         intent.setClass(getActivity(), FeedBack.class);
         startActivity(intent);
+
+        //打客服电话
+        AlertDialog.Builder AdBuilder = new AlertDialog.Builder(getActivity());
+//        AdBuilder.setTitle("<(＾－＾)>");
+//        AdBuilder.setMessage("您将要拨打电话至15231170279");
+//        AdBuilder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialog, int which) {
+//                Intent i = new Intent();
+//                i.setAction(Intent.ACTION_CALL);
+//                i.setData(Uri.parse("tel:15231170279"));
+//                startActivity(i);
+//            }
+//        });
+//        AdBuilder.setNegativeButton("取消", null);
+//        AdBuilder.create();
+//        AdBuilder.show();
+    }
+
+    //跳转到关于我们页面（对本软件的介绍）
+    @OnClick(R.id.layout_help)
+    public void onHelpClick(View view) {
+        Intent intent = new Intent();
+        intent.setClass(getActivity(), Help.class);
+        startActivity(intent);
     }
 
 
     @OnClick(R.id.btn_logout)
     public void onLogoutClick(View view) {
-        UserModel.getInstance().logout();
-        //可断开连接
-        BmobIM.getInstance().disConnect();
-        getActivity().finish();
-        startActivity(LoginActivity.class, null);
+
+//直接退出
+//        UserModel.getInstance().logout();
+//        //可断开连接
+//        BmobIM.getInstance().disConnect();
+//        getActivity().finish();
+//        startActivity(LoginActivity.class, null);
+
+        //弹出退出提示框
+        AlertDialog.Builder AdBuilder = new AlertDialog.Builder(getActivity());
+            AdBuilder.setTitle("确认退出吗？");
+            AdBuilder.setIcon(android.R.drawable.ic_dialog_info);
+            AdBuilder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            // 点击“确认”后的操作
+                            UserModel.getInstance().logout();
+                            //可断开连接
+                            BmobIM.getInstance().disConnect();
+                            getActivity().finish();
+                            startActivity(LoginActivity.class, null);
+
+                        }
+                    });
+            AdBuilder.setNegativeButton("返回", new DialogInterface.OnClickListener() {
+
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            // 点击“返回”后的操作,这里不设置没有任何操作
+                        }
+                    }).show();
     }
 
     @Override

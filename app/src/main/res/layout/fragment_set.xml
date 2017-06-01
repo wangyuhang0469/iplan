@@ -191,9 +191,9 @@
         style="@style/my_view" >
     </View>
 
-        //常见问题///
+        //帮助
         <RelativeLayout
-            android:id="@+id/layout_pro"
+            android:id="@+id/layout_help"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/btn_selector"
@@ -201,7 +201,7 @@
             android:padding="10dp" >
 
             <ImageView
-                android:id="@+id/inf"
+                android:id="@+id/help"
                 android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"
                 android:layout_width="20dp"
@@ -210,14 +210,14 @@
 
             <TextView
                 style="@style/style_text_black"
-                android:layout_toRightOf="@+id/inf"
+                android:layout_toRightOf="@+id/help"
                 android:paddingLeft="10dp"
                 android:layout_centerVertical="true"
-                android:text="@string/set_problems"
+                android:text="@string/set_help"
                 android:textColor="#444444"/>
 
             <TextView
-                android:id="@+id/tv_set_pr"
+                android:id="@+id/tv_set_help"
                 style="@style/style_text_black"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
