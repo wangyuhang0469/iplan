@@ -39,8 +39,7 @@ import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.SaveListener;
 
 import static android.R.id.list;
-import static com.example.iplan.R.id.ET;
-import static com.example.iplan.R.id.ET1;
+
 
 /**
  * 消息接收器
@@ -148,9 +147,9 @@ public class DemoMessageHandler extends BmobIMMessageHandler {
             values.put("year",jsonobject.getString("year"));
             values.put("month",jsonobject.getString("month"));
             values.put("dayOfMonth",jsonobject.getString("dayOfMonth"));
-            values.put("time",jsonobject.getString("hour"));
+            values.put("hour",jsonobject.getString("hour"));
             values.put("min",jsonobject.getString("min"));
-            values.put("thing",jsonobject.getString("dowhat"));
+            values.put("dowhat",jsonobject.getString("dowhat"));
             values.put("alarm",jsonobject.getString("alarm"));
             values.put("createTime",jsonobject.getString("createTime"));
             db.insert("Time",null,values);

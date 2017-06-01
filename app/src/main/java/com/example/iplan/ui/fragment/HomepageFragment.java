@@ -84,7 +84,7 @@ public class HomepageFragment extends ParentWithNaviFragment {
         int a = c.get(Calendar.YEAR);
         date.setText(c.get(Calendar.YEAR) + "年" + (c.get(Calendar.MONTH) + 1) + "月" + c.get(Calendar.DAY_OF_MONTH) + "日");
 
-        simpleAdapter = new SimpleAdapter(getActivity(), getData(), R.layout.listview_item, new String[]{"time", "thing"}, new int[]{R.id.show_time, R.id.title});
+        simpleAdapter = new SimpleAdapter(getActivity(), getData(), R.layout.listview_item, new String[]{"hour", "dowhat"}, new int[]{R.id.show_time, R.id.title});
 
         listview.setAdapter(simpleAdapter);
 
@@ -127,11 +127,13 @@ public class HomepageFragment extends ParentWithNaviFragment {
                 c.set(Calendar.DAY_OF_MONTH, (c.get(Calendar.DAY_OF_MONTH) - 1));
                 date.setText(c.get(Calendar.YEAR) + "年" + (c.get(Calendar.MONTH) + 1) + "月" + c.get(Calendar.DAY_OF_MONTH) + "日");
                 getData();
+                listview.setAdapter(simpleAdapter);
                 break;
             case R.id.btn_next:
                 c.set(Calendar.DAY_OF_MONTH, (c.get(Calendar.DAY_OF_MONTH) + 1));
                 date.setText(c.get(Calendar.YEAR) + "年" + (c.get(Calendar.MONTH) + 1) + "月" + c.get(Calendar.DAY_OF_MONTH) + "日");
                 getData();
+                listview.setAdapter(simpleAdapter);
                 break;
         }
     }
@@ -139,7 +141,7 @@ public class HomepageFragment extends ParentWithNaviFragment {
     private List<Map<String, Object>> getData() {
         dbHelper = new MyDatabaseHelper(getActivity(), "Time.db", null, 2);
         SQLiteDatabase DB = dbHelper.getReadableDatabase();
-        String a = "select * from Time where dayOfMonth ='"+c.get(Calendar.DAY_OF_MONTH)+"' group by time";
+        String a = "select * from Time where dayOfMonth ='"+c.get(Calendar.DAY_OF_MONTH)+"' group by hour";
         Cursor cursor = DB.rawQuery(a, null);
         //清空list
         list.clear();
@@ -148,8 +150,8 @@ public class HomepageFragment extends ParentWithNaviFragment {
             String time = cursor.getString(5);
             String title = cursor.getString(7);
             Map<String, Object> map = new HashMap<String, Object>();
-            map.put("time", time);
-            map.put("thing", title);
+            map.put("hour", time);
+            map.put("dowhat", title);
             list.add(map);
         }
         return list;
