@@ -3,6 +3,30 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
     <EditText
+        android:id="@+id/edit_who"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:bufferType="editable"
+        android:hint="who"/>
+    <EditText
+        android:id="@+id/edit_year"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:bufferType="editable"
+        android:text="2017"/>
+    <EditText
+        android:id="@+id/edit_month"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:bufferType="editable"
+        android:text="6"/>
+    <EditText
+        android:id="@+id/edit_dayOfMonth"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:bufferType="editable"
+        android:hint="dayOfMonth"/>
+    <EditText
         android:id="@+id/ET"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

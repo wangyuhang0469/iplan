@@ -126,10 +126,12 @@ public class HomepageFragment extends ParentWithNaviFragment {
             case R.id.btn_last:
                 c.set(Calendar.DAY_OF_MONTH, (c.get(Calendar.DAY_OF_MONTH) - 1));
                 date.setText(c.get(Calendar.YEAR) + "年" + (c.get(Calendar.MONTH) + 1) + "月" + c.get(Calendar.DAY_OF_MONTH) + "日");
+                getData();
                 break;
             case R.id.btn_next:
                 c.set(Calendar.DAY_OF_MONTH, (c.get(Calendar.DAY_OF_MONTH) + 1));
                 date.setText(c.get(Calendar.YEAR) + "年" + (c.get(Calendar.MONTH) + 1) + "月" + c.get(Calendar.DAY_OF_MONTH) + "日");
+                getData();
                 break;
         }
     }
@@ -137,14 +139,14 @@ public class HomepageFragment extends ParentWithNaviFragment {
     private List<Map<String, Object>> getData() {
         dbHelper = new MyDatabaseHelper(getActivity(), "Time.db", null, 2);
         SQLiteDatabase DB = dbHelper.getReadableDatabase();
-        String a = "select * from Time";
+        String a = "select * from Time where dayOfMonth ='"+c.get(Calendar.DAY_OF_MONTH)+"' group by time";
         Cursor cursor = DB.rawQuery(a, null);
         //清空list
         list.clear();
         //查询到的数据添加到list集合
         while (cursor.moveToNext()) {
-            String time = cursor.getString(1);
-            String title = cursor.getString(2);
+            String time = cursor.getString(5);
+            String title = cursor.getString(7);
             Map<String, Object> map = new HashMap<String, Object>();
             map.put("time", time);
             map.put("thing", title);

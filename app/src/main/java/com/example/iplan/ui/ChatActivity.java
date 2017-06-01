@@ -286,7 +286,7 @@ public class ChatActivity extends ParentWithNaviActivity implements ObseverListe
             Plan a = (Plan) bundle.getSerializable("a");
             if(bundle!=null)
                 sendSchedukeMessage(a);
-                toast(a.getId());
+                toast(a.getWho());
         }
     }
 

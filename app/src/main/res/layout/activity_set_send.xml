@@ -12,15 +12,28 @@
     tools:context="com.example.iplan.ui.SetSendActivity">
 
     <EditText
-        android:id="@+id/edit_id"
+        android:id="@+id/edit_who"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="id"/>
+        android:hint="who"/>
+    <EditText
+        android:id="@+id/edit_year"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="year"
+        android:text="2017"/>
+    <EditText
+        android:id="@+id/edit_month"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="month"
+        android:text="6"/>
     <EditText
         android:id="@+id/edit_dayOfMonth"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="dayOfMonth"/>
+        android:hint="dayOfMonth"
+        android:text="1"/>
     <EditText
         android:id="@+id/edit_hour"
         android:layout_width="match_parent"
@@ -30,7 +43,8 @@
         android:id="@+id/edit_min"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="min"/>
+        android:hint="min"
+        android:text="59"/>
     <EditText
         android:id="@+id/edit_dowhat"
         android:layout_width="match_parent"
@@ -47,7 +61,8 @@
         android:id="@+id/edit_time"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="time"/>
+        android:hint="time"
+        android:text="闹钟"/>
     <Button
         android:id="@+id/btn_add"
         android:layout_width="match_parent"

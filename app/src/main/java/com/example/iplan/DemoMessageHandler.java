@@ -137,19 +137,32 @@ public class DemoMessageHandler extends BmobIMMessageHandler {
             addFriend(agree.getFromId());//添加消息的发送方为好友
             //这里应该也需要做下校验--来检测下是否已经同意过该好友请求，我这里省略了
             showAgreeNotify(info, agree);
-        } else {
-            Toast.makeText(context, "接收到的自定义消息：" + msg.getMsgType() + "," + msg.getContent() + "," + msg.getExtra(), Toast.LENGTH_SHORT).show();
+        }else if (type.equals("Schedule")){
             String a=msg.getExtra();
             JSONObject jsonobject = JSONObject.fromObject(a);
             String hour = jsonobject.getString("hour");
             String dowhat = jsonobject.getString("dowhat");
-             MyDatabaseHelper dbHelper=new MyDatabaseHelper(this.context,"Time.db",null,2);
+            MyDatabaseHelper dbHelper=new MyDatabaseHelper(this.context,"Time.db",null,2);
             SQLiteDatabase db = dbHelper.getWritableDatabase();
             ContentValues values = new ContentValues();
             values.put("time",hour);
             values.put("thing",dowhat);
             db.insert("Time",null,values);
             values.clear();
+        }
+        else {
+            Toast.makeText(context, "接收到的自定义消息：" + msg.getMsgType() + "," + msg.getContent() + "," + msg.getExtra(), Toast.LENGTH_SHORT).show();
+//            String a=msg.getExtra();
+//            JSONObject jsonobject = JSONObject.fromObject(a);
+//            String hour = jsonobject.getString("hour");
+//            String dowhat = jsonobject.getString("dowhat");
+//             MyDatabaseHelper dbHelper=new MyDatabaseHelper(this.context,"Time.db",null,2);
+//            SQLiteDatabase db = dbHelper.getWritableDatabase();
+//            ContentValues values = new ContentValues();
+//            values.put("time",hour);
+//            values.put("thing",dowhat);
+//            db.insert("Time",null,values);
+//            values.clear();
         }
     }
 
