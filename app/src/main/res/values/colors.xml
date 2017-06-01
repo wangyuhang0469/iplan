@@ -31,4 +31,36 @@
     <color name="color_1e1e1e">#1e1e1e</color>
     <color name="color_b4">#b4b4b4</color>
 
+
+
+
+
+
+
+    <color name="material_deep_purple_200">#d4237a</color>
+    <color name="material_red_500">#F44336</color>
+    <color name="material_deep_purple_500">#673AB7</color>
+
+    <color name="style_color_primary">#2d5d82</color>
+    <color name="style_color_primary_dark">#21425d</color>
+    <color name="style_color_accent">#01bcd5</color>
+
+    <color name="fab_color_pressed">#007787</color>
+    <color name="fab_color_shadow">#44000000</color>
+
+    <color name="btn_default_light_normal">#00000000</color>
+    <color name="btn_default_light_pressed">#40ffffff</color>
+    <color name="btn_send_normal">#02c754</color>
+    <color name="btn_send_pressed">#006633</color>
+    <color name="btn_default_shadow">#99000000</color>
+    <color name="btn_context_menu_normal">#ffffff</color>
+    <color name="btn_context_menu_pressed">#40000000</color>
+    <color name="btn_context_menu_text_red">#ffff0000</color>
+
+    <color name="text_like_counter">#2b5a83</color>
+
+    <color name="bg_comments">#1afa29</color>
+
+
+    <color name="accent200">#f4ea2a</color>
 </resources>
