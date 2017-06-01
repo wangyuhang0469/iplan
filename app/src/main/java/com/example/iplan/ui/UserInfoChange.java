@@ -34,11 +34,7 @@ public class UserInfoChange extends AppCompatActivity {
 
         User user;
         BmobIMUserInfo info;
-//
-//        @Override
-//        protected String title() {
-//            return "个人资料";
-//        }
+
 
         @Override
         protected void onCreate(Bundle savedInstanceState) {

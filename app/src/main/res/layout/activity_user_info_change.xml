@@ -6,7 +6,8 @@
     android:background="@color/theme_bg_color"
     android:orientation="vertical" >
 
-    <include layout="@layout/include_navi"/>
+    <include layout="@layout/include_navi"
+        android:visibility="gone"/>
 
     <!--android:background="#e0000000"-->
     <RelativeLayout
@@ -89,7 +90,8 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="20dp"
-            android:drawablePadding="10dp" />
+            android:drawablePadding="10dp"
+            android:text="男"/>
     </RelativeLayout>
 
     <RelativeLayout
@@ -110,7 +112,8 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="20dp"
-            android:drawablePadding="10dp" />
+            android:drawablePadding="10dp"
+            android:text="22"/>
     </RelativeLayout>
 
     <RelativeLayout
@@ -131,7 +134,8 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="20dp"
-            android:drawablePadding="10dp" />
+            android:drawablePadding="10dp"
+            android:text="10月17日"/>
     </RelativeLayout>
 
 

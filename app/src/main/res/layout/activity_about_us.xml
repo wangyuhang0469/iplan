@@ -4,6 +4,7 @@
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#eeeeee"
     android:orientation="vertical">
     <RelativeLayout
         android:layout_width="match_parent"
@@ -34,19 +35,8 @@
         android:layout_width="fill_parent"
         android:layout_height="match_parent"
         android:textSize="13dp"
-        android:text="\t\t\t\tIplan职能介绍
-IplanAPP是一款定位于，辅（校内物品交易）、交友以及大学资讯为主要内容的大学生应用APP，该APP共搭建了三种平台:分别为兼职平台、校园街平台、资讯平台，致力于为大学生提供真实、好玩、实用的生活与服务。\n
-校园兼职功能特色\n
-[真实靠谱的信息] 兼职信息经过四重审核，确保真实靠谱！\n
-[丰富齐全的兼职]信息种类齐全，既可满足学生进行社会实践，锻炼自我，也可满足蓝领求职找工作！\n
-[便捷贴心的服务]我们根据用户的习惯为用户匹配可能感兴趣的兼职，提高你的浏览效率！"
-
-        />
+        android:text="\t\t\t\tIplan是一款给他人（自己）制定即时计划，辅以用户之间的交流、传递爱应用APP.\n
+\t\t\t\tIplan主要目的是为了给他人写计划，而且这个计划是即时性的，而不是制定长期的计划，这将大大提高实用性。\n
+\t\t\t\t我们传递的计划，不仅仅是计划本本身，而是包含着传递人的爱。希望他（她）能变得更好，这是一款可以改变你爱人，时刻让你感受到你在被人关心（你在关心别人）的APP。"
+/>
 </LinearLayout>
-
-    <!--android:text="\t\t\t\t校园兼职职能介绍-->
-    <!--新兼职APP是一款定位于在校大学生兼职，辅以校园街（校内物品交易）、交友以及大学资讯为主要内容的大学生应用APP，该APP共搭建了三种平台:分别为兼职平台、校园街平台、资讯平台，致力于为大学生提供真实、好玩、实用的生活与服务。\n-->
-    <!--校园兼职功能特色\n-->
-    <!--[真实靠谱的信息] 兼职信息经过四重审核，确保真实靠谱！\n-->
-    <!--[丰富齐全的兼职]信息种类齐全，既可满足学生进行社会实践，锻炼自我，也可满足蓝领求职找工作！\n-->
-    <!--[便捷贴心的服务]我们根据用户的习惯为用户匹配可能感兴趣的兼职，提高你的浏览效率！"-->
