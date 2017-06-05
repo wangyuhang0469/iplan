@@ -49,7 +49,8 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:layout_gravity="center_horizontal">
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="8dp">
 
         <TextView
             android:layout_width="wrap_content"
@@ -58,7 +59,8 @@
             android:layout_toRightOf="@+id/edit_dayOfMonth"
             android:layout_toEndOf="@+id/edit_dayOfMonth"
             android:layout_alignParentBottom="true"
-            android:textColor="#fff"/>
+            android:textColor="#fff"
+            android:paddingBottom="3dp"/>
         <TextView
             android:id="@+id/edit_dayOfMonth"
             android:layout_width="80dp"
@@ -72,23 +74,17 @@
             android:textColor="#fff"/>
     </RelativeLayout>
 
+    <View
+        android:layout_width="100dp"
+        android:layout_height="1dp"
+        android:background="#fff"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="5dp"/>
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="35dp"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="5dp">
-
-        <TextView
-            android:id="@+id/edit_year"
-            android:layout_width="80dp"
-            android:layout_height="wrap_content"
-            android:hint="year"
-            android:text="2017"
-            android:textSize="30sp"
-            android:gravity="center_horizontal"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:textColor="#fff"/>
+>
 
         <TextView
             android:layout_width="wrap_content"
@@ -99,6 +95,18 @@
             android:layout_toEndOf="@+id/edit_year"
             android:id="@+id/textView2"
             android:textColor="#fff"/>
+
+        <TextView
+            android:id="@+id/edit_year"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:hint="year"
+            android:text="2017"
+            android:textSize="30sp"
+            android:gravity="center_horizontal"
+            android:textColor="#fff"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" />
     </RelativeLayout>
 
 
@@ -130,7 +138,8 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:id="@+id/textView3"
-            android:layout_marginLeft="15dp"/>
+            android:layout_marginLeft="15dp"
+            android:textStyle="bold"/>
     </RelativeLayout>
 
 
@@ -147,7 +156,7 @@
         android:layout_marginRight="10dp"
         android:layout_marginTop="5dp"
         android:textOn="开"
-        android:textOff="关"/>
+        android:textOff="关" />
 
 <LinearLayout
     android:layout_width="match_parent"

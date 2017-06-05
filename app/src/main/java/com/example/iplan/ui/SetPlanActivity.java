@@ -138,7 +138,7 @@ public class SetPlanActivity extends Activity {
 
     @OnClick({R.id.edit_month, R.id.edit_dayOfMonth, R.id.edit_year})
     public void onViewClicked(View view) {
-        new DatePickerDialog(SetPlanActivity.this, new DatePickerDialog.OnDateSetListener() {
+        new DatePickerDialog(SetPlanActivity.this,android.R.style.Theme_DeviceDefault_Light_Dialog, new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                 calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
