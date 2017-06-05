@@ -108,7 +108,8 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="20dp"
-            android:drawablePadding="10dp" />
+            android:drawablePadding="10dp"
+            android:text="男"/>
     </RelativeLayout>
 
                 <View
@@ -135,7 +136,8 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="20dp"
-            android:drawablePadding="10dp" />
+            android:drawablePadding="10dp"
+            android:text="21"/>
     </RelativeLayout>
 
                 <View
@@ -162,7 +164,8 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="20dp"
-            android:drawablePadding="10dp" />
+            android:drawablePadding="10dp"
+            android:text="5月23日"/>
     </RelativeLayout>
                 <View
                     android:layout_width="match_parent"

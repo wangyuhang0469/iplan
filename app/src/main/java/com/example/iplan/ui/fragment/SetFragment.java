@@ -8,13 +8,17 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.text.TextUtils;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.iplan.R;
 import com.example.iplan.adapter.base.BaseRecyclerHolder;
@@ -71,6 +75,7 @@ public class SetFragment extends ParentWithNaviFragment {
 
     User user;
     BmobIMUserInfo info;
+
 
 
 
@@ -201,6 +206,8 @@ public class SetFragment extends ParentWithNaviFragment {
                         }
                     }).show();
     }
+
+
 
     @Override
     public void onDestroyView() {

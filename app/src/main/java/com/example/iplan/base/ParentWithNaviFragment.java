@@ -1,6 +1,7 @@
 package com.example.iplan.base;
 
 import android.graphics.drawable.BitmapDrawable;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -137,5 +138,10 @@ public abstract class ParentWithNaviFragment extends BaseFragment {
     protected <T extends View> T getView(int id) {
         return (T) rootView.findViewById(id);
     }
+
+
+
+
+//    public abstract boolean onKeyDown(int keyCode, KeyEvent event);
 
 }
