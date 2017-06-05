@@ -59,14 +59,16 @@ public class HomepageFragment extends ParentWithNaviFragment {
 //    EditText dowhat;
     @Bind(R.id.listview)
     ListView listview;
-    @Bind(R.id.button2)
-    Button show;
+//    @Bind(R.id.button2)
+//    Button show;
     @Bind(R.id.btn_last)
     Button btnLast;
     @Bind(R.id.date)
     TextView date;
     @Bind(R.id.btn_next)
     Button btnNext;
+    @Bind(R.id.Add)
+    ImageView Add;
 
     @Override
     protected String title() {
@@ -93,7 +95,7 @@ public class HomepageFragment extends ParentWithNaviFragment {
 
         listview.setAdapter(simpleAdapter);
 
-        show.setOnClickListener(new View.OnClickListener() {
+        Add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), SendTime.class);
@@ -201,5 +203,6 @@ public class HomepageFragment extends ParentWithNaviFragment {
     public void onViewClicked() {
         getData();
         listview.setAdapter(simpleAdapter);
+        Toast.makeText(getActivity(), "已刷新", Toast.LENGTH_SHORT).show();
     }
 }
