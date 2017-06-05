@@ -12,10 +12,13 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.iplan.R;
 import com.example.iplan.adapter.MyDatabaseHelper;
@@ -39,11 +42,13 @@ import static android.app.Activity.RESULT_OK;
  * A simple {@link Fragment} subclass.
  */
 public class HomepageFragment extends ParentWithNaviFragment {
-    @Bind(R.id.button1)
-    Button button1;
+    @Bind(R.id.refresh)
+    ImageView refresh;
     private MyDatabaseHelper dbHelper;
     private List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
     private SimpleAdapter simpleAdapter;
+    private int lastPress = 0;
+    private boolean delState = false;
 
 
     //    @Bind(R.id.hour)
@@ -96,6 +101,41 @@ public class HomepageFragment extends ParentWithNaviFragment {
             }
 
 
+        });
+        listview.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            private View delview;
+
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
+                if (lastPress < parent.getCount()) {
+                    delview = parent.getChildAt(lastPress).findViewById(R.id.linear_del);
+                    if (null != delview) {
+                        delview.setVisibility(View.GONE);
+                    }
+                }
+
+                delview = view.findViewById(R.id.linear_del);
+                delview.setVisibility(View.VISIBLE);
+
+                delview.findViewById(R.id.tv_del).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        delview.setVisibility(View.GONE);
+                        list.remove(position);
+                        simpleAdapter.notifyDataSetChanged();
+                    }
+                });
+                delview.findViewById(R.id.tv_cancel).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        delview.setVisibility(View.GONE);
+                    }
+                });
+
+                lastPress = position;
+                delState = true;
+                return true;
+            }
         });
         return view;
     }
@@ -157,7 +197,7 @@ public class HomepageFragment extends ParentWithNaviFragment {
         return list;
     }
 
-    @OnClick(R.id.button1)
+    @OnClick(R.id.refresh)
     public void onViewClicked() {
         getData();
         listview.setAdapter(simpleAdapter);
