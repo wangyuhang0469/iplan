@@ -79,7 +79,8 @@ public class SetSendActivity extends ParentWithNaviActivity {
                         Integer.parseInt(editHour.getText().toString()),
                         Integer.parseInt(editMin.getText().toString()),
                         editDowhat.getText().toString(),
-                        isAlarm.isChecked());
+                        isAlarm.isChecked(),
+                        Long.parseLong(editMin.getText().toString()));
                 Intent intent = getIntent();
                 //这里使用bundle绷带来传输数据
                 Bundle bundle = new Bundle();

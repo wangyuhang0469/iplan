@@ -82,7 +82,7 @@
         <activity android:name=".ui.fragment.AboutUs" />
         <activity android:name=".ui.Share" />
         <activity android:name=".ui.FeedBack"></activity>
-        <activity android:name=".ui.SendTime"/>
+        <activity android:name=".ui.SetPlanActivity"/>
         <activity android:name=".ui.FeedBack" />
         <activity android:name=".bean.ScheduleMessage" />
         <activity android:name=".ui.SetSendActivity" />

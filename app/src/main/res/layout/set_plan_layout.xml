@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_addplan">
+
+    <ImageView
+        android:id="@+id/tv_left"
+        android:layout_width="wrap_content"
+        android:layout_height="25dp"
+        android:paddingRight="@dimen/margin_5"
+        android:paddingLeft="@dimen/margin_10"
+        android:layout_marginTop="13dp"
+        android:layout_marginBottom="13dp"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/base_action_bar_back_bg_selector"
+        />
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="月"
+            android:id="@+id/textView"
+            android:layout_toRightOf="@+id/edit_month"
+            android:layout_toEndOf="@+id/edit_month"
+            android:layout_alignParentBottom="true"
+            android:textColor="#fff"/>
+        <TextView
+            android:id="@+id/edit_month"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:hint="month"
+            android:text="06"
+            android:textSize="50sp"
+            android:gravity="center_horizontal"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:textColor="#fff"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_gravity="center_horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="日"
+            android:layout_toRightOf="@+id/edit_dayOfMonth"
+            android:layout_toEndOf="@+id/edit_dayOfMonth"
+            android:layout_alignParentBottom="true"
+            android:textColor="#fff"/>
+        <TextView
+            android:id="@+id/edit_dayOfMonth"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:hint="dayOfMonth"
+            android:text="26"
+            android:textSize="50sp"
+            android:gravity="center_horizontal"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:textColor="#fff"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="5dp">
+
+        <TextView
+            android:id="@+id/edit_year"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:hint="year"
+            android:text="2017"
+            android:textSize="30sp"
+            android:gravity="center_horizontal"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:textColor="#fff"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="年"
+            android:layout_alignParentBottom="true"
+            android:layout_toRightOf="@+id/edit_year"
+            android:layout_toEndOf="@+id/edit_year"
+            android:id="@+id/textView2"
+            android:textColor="#fff"/>
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp">
+
+        <TextView
+            android:id="@+id/date_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="选择时间"
+            android:textSize="35sp"
+            android:layout_centerInParent="true"
+            android:textColor="#fff"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="时间"
+            android:textSize="20dp"
+            android:textColor="#fff"
+            android:gravity="center_vertical"
+            android:layout_alignBaseline="@+id/date_tv"
+            android:layout_alignBottom="@+id/date_tv"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:id="@+id/textView3"
+            android:layout_marginLeft="15dp"/>
+    </RelativeLayout>
+
+
+
+    <Switch
+        android:id="@+id/isAlarm"
+        android:text="闹钟"
+        android:textSize="20dp"
+        android:textColor="#fff"
+        android:textStyle="bold"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="5dp"
+        android:textOn="开"
+        android:textOff="关"/>
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="45dp"
+    android:background="#fff"
+    android:layout_marginTop="10dp">
+
+    <TextView
+        android:layout_width="70dp"
+        android:layout_height="match_parent"
+        android:text="任务"
+        android:textSize="20dp"
+        android:gravity="center"
+        android:textColor="#222"
+        android:id="@+id/textView4" />
+
+    <View
+        android:layout_width="1dp"
+        android:layout_height="25dp"
+        android:layout_gravity="center_vertical"
+        android:background="#888"/>
+
+    <EditText
+        android:id="@+id/edit_dowhat"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="15dp"
+        android:hint="请写下你的计划"
+        android:textColor="#222"
+        android:background="@null"
+        android:textCursorDrawable="@null"/>
+</LinearLayout>
+
+
+    <Button
+        android:id="@+id/send"
+        android:layout_width="match_parent"
+        android:layout_height="43dp"
+        android:text="添加计划"
+        android:layout_marginLeft="260dp"
+        android:background="#4DB361"
+        android:textColor="#fff"
+        android:textSize="17sp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="5dp"/>
+
+</LinearLayout>

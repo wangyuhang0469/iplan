@@ -133,7 +133,7 @@ public class SetFragment extends ParentWithNaviFragment {
     public void onShareClick(View view) {
         Intent intent1 = new Intent(Intent.ACTION_SEND);
         intent1.putExtra(Intent.EXTRA_TEXT, "这是iplan APP");
-        intent1.setType("text/plain");
+        intent1.setType("set_plan_layout/plain");
         startActivity(Intent.createChooser(intent1, "share"));
     }
 

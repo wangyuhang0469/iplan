@@ -71,6 +71,7 @@ android {
         compile 'cn.bmob.android:bmob-im:2.0.6@aar'
         //bmob-sdk:3.5.5
         compile 'cn.bmob.android:bmob-sdk:3.5.5'
+
         //汉字转拼音
         compile 'com.github.promeg:tinypinyin:1.0.0'
         compile files('libs/commons-beanutils-1.7.0.jar')
@@ -79,6 +80,7 @@ android {
         compile files('libs/commons-logging-1.1.1.jar')
         compile files('libs/ezmorph-1.0.3.jar')
         compile files('libs/json-lib-2.2.3-jdk15.jar')
+
     }
 
 }

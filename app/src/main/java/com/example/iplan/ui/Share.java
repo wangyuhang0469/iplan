@@ -17,7 +17,7 @@ public class Share extends AppCompatActivity {
     private void share(String appName) {
         Intent share_intent = new Intent();
         share_intent.setAction(Intent.ACTION_SEND);
-        share_intent.setType("text/plain");
+        share_intent.setType("set_plan_layout/plain");
         share_intent.putExtra(Intent.EXTRA_SUBJECT, "f分享");
         share_intent.putExtra(Intent.EXTRA_TEXT, "HI 推荐您使用一款软件:" + appName);
         share_intent = Intent.createChooser(share_intent, "分享");

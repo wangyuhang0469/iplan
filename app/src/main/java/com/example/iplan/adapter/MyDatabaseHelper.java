@@ -13,7 +13,7 @@ import com.example.iplan.ui.fragment.HomepageFragment;
  */
 
 public class MyDatabaseHelper extends SQLiteOpenHelper {
-    public static final String CREATE_TIME = "create table Time("+"id integer primary key autoincrement,"+"who text,"+"year text,"+"month text,"+"dayOfMonth text,"+"hour text,"+"min text,"+"dowhat text,"+"alarm text,"+"createTime text)";
+    public static final String CREATE_TIME = "create table Time("+"id integer primary key autoincrement,"+"who set_plan_layout,"+"year set_plan_layout,"+"month set_plan_layout,"+"dayOfMonth set_plan_layout,"+"hour set_plan_layout,"+"min set_plan_layout,"+"dowhat set_plan_layout,"+"alarm set_plan_layout,"+"createTime set_plan_layout)";
     private Context mContext;
     public MyDatabaseHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version){
         super(context,name,factory,version);

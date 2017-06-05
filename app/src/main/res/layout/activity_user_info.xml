@@ -73,7 +73,7 @@
             <!--style="@style/style_text_black"-->
             <!--android:layout_alignParentLeft="true"-->
             <!--android:layout_centerVertical="true"-->
-            <!--android:text="@string/add_name" />-->
+            <!--android:set_plan_layout="@string/add_name" />-->
 
         <!--<TextView-->
             <!--android:id="@+id/tv_name"-->

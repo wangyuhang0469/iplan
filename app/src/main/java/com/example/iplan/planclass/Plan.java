@@ -23,7 +23,7 @@ public class Plan implements Serializable {
 
 
 
-    public Plan(String who,int year, int month, int dayOfMonth, int hour, int min, String dowhat, boolean alarm){
+    public Plan(String who,int year, int month, int dayOfMonth, int hour, int min, String dowhat, boolean alarm,Long time){
 
         this.who=who;
         this.year=year;
@@ -33,7 +33,7 @@ public class Plan implements Serializable {
         this.min=min;
         this.dowhat=dowhat;
         this.alarm=alarm;
-
+        this.time=time;
     }
 
 
