@@ -154,7 +154,6 @@ public class SetPlanActivity extends Activity {
         }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH)).show();
     }
 
-
     @OnClick(R.id.setalarm)
     public void onSetAlarmClicked() {
         AlarmManagerUtil.setAlarm(this, 1, calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE), 1, 0, "闹钟响了", ring);
