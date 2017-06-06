@@ -77,6 +77,16 @@
         <service android:name="cn.bmob.newim.core.service.ReConnectService" />
         <service android:name="cn.bmob.newim.core.service.HeartBeatService" />
 
+        <receiver android:name="com.example.iplan.clock.LoongggAlarmReceiver">
+            <intent-filter>
+                <action android:name="com.example.iplan.clock"/>
+            </intent-filter>
+        </receiver>
+
+        <activity
+            android:name=".clock.ClockAlarmActivity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            ></activity>
         <activity android:name=".ui.UserInfoChange" />
         <activity android:name=".bean.ScheduleMessage" />
         <activity android:name=".ui.fragment.AboutUs" />

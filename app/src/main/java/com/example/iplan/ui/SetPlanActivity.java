@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import com.example.iplan.R;
 import com.example.iplan.adapter.MyDatabaseHelper;
+import com.example.iplan.clock.AlarmManagerUtil;
 import com.example.iplan.model.UserModel;
 
 import java.text.SimpleDateFormat;
@@ -47,9 +48,12 @@ public class SetPlanActivity extends Activity {
     ImageView back;
     @Bind(R.id.date_tv)
     TextView date_tv;
+    @Bind(R.id.setalarm)
+    Button setalarm;
 
     private MyDatabaseHelper dbHelper;
     Calendar calendar;
+    private int ring = 1;
 
 
     @Override
@@ -65,7 +69,7 @@ public class SetPlanActivity extends Activity {
         editMonth.setText(format(calendar.get(Calendar.MONTH) + 1));
         editDayOfMonth.setText(format(calendar.get(Calendar.DAY_OF_MONTH)));
 
-        String now =  format(calendar.get(Calendar.HOUR_OF_DAY)) + ":" + format(calendar.get(Calendar.MINUTE));
+        String now = format(calendar.get(Calendar.HOUR_OF_DAY)) + ":" + format(calendar.get(Calendar.MINUTE));
         date_tv.setText(now);
 
         date_tv.setOnClickListener(new View.OnClickListener() {
@@ -116,8 +120,7 @@ public class SetPlanActivity extends Activity {
             Intent intent = getIntent();
             setResult(RESULT_OK, intent);
             finish();
-        }
-        else {
+        } else {
             Toast.makeText(this, "请输入你的计划", Toast.LENGTH_SHORT).show();
         }
     }
@@ -138,7 +141,7 @@ public class SetPlanActivity extends Activity {
 
     @OnClick({R.id.edit_month, R.id.edit_dayOfMonth, R.id.edit_year})
     public void onViewClicked(View view) {
-        new DatePickerDialog(SetPlanActivity.this,android.R.style.Theme_DeviceDefault_Light_Dialog, new DatePickerDialog.OnDateSetListener() {
+        new DatePickerDialog(SetPlanActivity.this, android.R.style.Theme_DeviceDefault_Light_Dialog, new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                 calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
@@ -149,6 +152,11 @@ public class SetPlanActivity extends Activity {
                 editDayOfMonth.setText(format(calendar.get(Calendar.DAY_OF_MONTH)));
             }
         }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH)).show();
-        }
+    }
 
+    @OnClick(R.id.setalarm)
+    public void onSetAlarmClicked() {
+        AlarmManagerUtil.setAlarm(this, 1, calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE), 1, 0, "闹钟响了", ring);
+        Toast.makeText(this, calendar.get(Calendar.HOUR_OF_DAY)+""+calendar.get(Calendar.MINUTE), Toast.LENGTH_SHORT).show();
+    }
 }
