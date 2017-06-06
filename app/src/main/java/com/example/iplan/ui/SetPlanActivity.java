@@ -81,12 +81,16 @@ public class SetPlanActivity extends Activity {
                 new TimePickerDialog(SetPlanActivity.this, android.R.style.Theme_DeviceDefault_Light_Dialog, new TimePickerDialog.OnTimeSetListener() {
                     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
                         // TODO Auto-generated method stub
+
+
                         calendar.set(Calendar.HOUR_OF_DAY, hourOfDay);
                         calendar.set(Calendar.MINUTE, minute);
                         calendar.set(Calendar.SECOND, 0);
                         calendar.set(Calendar.MILLISECOND, 0);
                         String tmps = format(hourOfDay) + ":" + format(minute);
                         date_tv.setText(tmps);
+
+
                     }
                 }, hour, minute, true).show();
             }

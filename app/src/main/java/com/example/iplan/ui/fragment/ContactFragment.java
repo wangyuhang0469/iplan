@@ -1,5 +1,7 @@
 package com.example.iplan.ui.fragment;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
@@ -20,6 +22,7 @@ import com.example.iplan.bean.User;
 import com.example.iplan.event.RefreshEvent;
 import com.example.iplan.model.UserModel;
 import com.example.iplan.ui.ChatActivity;
+import com.example.iplan.ui.LoginActivity;
 import com.example.iplan.ui.NewFriendActivity;
 import com.example.iplan.ui.SearchUserActivity;
 import com.github.promeg.pinyinhelper.Pinyin;
@@ -153,27 +156,70 @@ public class ContactFragment extends ParentWithNaviFragment {
                 }
             }
 
+            //好友删除
             @Override
             public boolean onItemLongClick(final int position) {
-                log("长按" + position);
-                if (position == 0) {
-                    return true;
-                }
-                UserModel.getInstance().deleteFriend(adapter.getItem(position),
-                        new UpdateListener() {
-                            @Override
-                            public void done(BmobException e) {
-                                if (e == null) {
-                                    toast("好友删除成功");
-                                    adapter.remove(position);
-                                } else {
-                                    toast("好友删除失败：" + e.getErrorCode() + ",s =" + e.getMessage());
-                                }
-                            }
-                        });
+                AlertDialog.Builder AdBuilder = new AlertDialog.Builder(getActivity());
+                AdBuilder.setTitle("确认删除吗？");
+
+                AdBuilder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // 点击“确认”后的操作
+                        log("长按" + position);
+                        if (position == 0) {
+//                            return true;
+                        }
+                        UserModel.getInstance().deleteFriend(adapter.getItem(position),
+                                new UpdateListener() {
+                                    @Override
+                                    public void done(BmobException e) {
+                                        if (e == null) {
+                                            toast("好友删除成功");
+                                            adapter.remove(position);
+                                        } else {
+                                            toast("好友删除失败：" + e.getErrorCode() + ",s =" + e.getMessage());
+                                        }
+                                    }
+                                });
+
+                    }
+                });
+                AdBuilder.setNegativeButton("返回", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // 点击“返回”后的操作,这里不设置没有任何操作
+                    }
+                }).show();
 
                 return true;
             }
+
+
+//                //好友删除
+//                @Override
+//                public boolean onItemLongClick(final int position) {
+//                log("长按" + position);
+//                if (position == 0) {
+//                    return true;
+//                }
+//                UserModel.getInstance().deleteFriend(adapter.getItem(position),
+//                        new UpdateListener() {
+//                            @Override
+//                            public void done(BmobException e) {
+//                                if (e == null) {
+//                                    toast("好友删除成功");
+//                                    adapter.remove(position);
+//                                } else {
+//                                    toast("好友删除失败：" + e.getErrorCode() + ",s =" + e.getMessage());
+//                                }
+//                            }
+//                        });
+//                return true;
+//            }
+
+
+
         });
     }
 

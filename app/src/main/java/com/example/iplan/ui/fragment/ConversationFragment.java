@@ -1,5 +1,7 @@
 package com.example.iplan.ui.fragment;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
@@ -21,6 +23,7 @@ import com.example.iplan.bean.PrivateConversation;
 import com.example.iplan.db.NewFriend;
 import com.example.iplan.db.NewFriendManager;
 import com.example.iplan.event.RefreshEvent;
+import com.example.iplan.model.UserModel;
 import com.example.iplan.ui.SearchUserActivity;
 
 import org.greenrobot.eventbus.EventBus;
@@ -37,6 +40,8 @@ import cn.bmob.newim.BmobIM;
 import cn.bmob.newim.bean.BmobIMConversation;
 import cn.bmob.newim.event.MessageEvent;
 import cn.bmob.newim.event.OfflineMessageEvent;
+import cn.bmob.v3.exception.BmobException;
+import cn.bmob.v3.listener.UpdateListener;
 
 /**会话界面
  * @author :smile
@@ -125,17 +130,47 @@ public class ConversationFragment extends ParentWithNaviFragment {
             }
         });
         adapter.setOnRecyclerViewListener(new OnRecyclerViewListener() {
+
+
             @Override
             public void onItemClick(int position) {
                 adapter.getItem(position).onClick(getActivity());
             }
 
+
+
+
+            //好友删除
             @Override
-            public boolean onItemLongClick(int position) {
-                adapter.getItem(position).onLongClick(getActivity());
-                adapter.remove(position);
+            public boolean onItemLongClick(final int position) {
+
+
+                AlertDialog.Builder AdBuilder = new AlertDialog.Builder(getActivity());
+                AdBuilder.setTitle("确认删除吗？");
+
+                AdBuilder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // 点击“确认”后的操作
+                        adapter.getItem(position).onLongClick(getActivity());
+                        adapter.remove(position);
+
+                    }
+                });
+                AdBuilder.setNegativeButton("返回", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // 点击“返回”后的操作,这里不设置没有任何操作
+                    }
+                }).show();
+
+
+//                adapter.getItem(position).onLongClick(getActivity());
+//                adapter.remove(position);
                 return true;
             }
+
+
         });
 }
 

@@ -4,7 +4,7 @@
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#eeeeee"
+    android:background="#ffffff"
     android:orientation="vertical">
     <RelativeLayout
         android:layout_width="match_parent"
@@ -25,6 +25,13 @@
             android:layout_centerInParent="true"
             android:textColor="#222222"/>
     </RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_2"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        style="@style/my_view" >
+    </View>
     <TextView
         android:paddingLeft="30dp"
         android:paddingRight="30dp"
@@ -34,7 +41,7 @@
         android:textColor="#090504"
         android:layout_width="fill_parent"
         android:layout_height="match_parent"
-        android:textSize="13dp"
+        android:textSize="15dp"
         android:text="\t\t\t\tIplan是一款给他人（自己）制定即时计划，辅以用户之间的交流、传递爱应用APP.\n
 \t\t\t\tIplan主要目的是为了给他人写计划，而且这个计划是即时性的，而不是制定长期的计划，这将大大提高实用性。\n
 \t\t\t\t我们传递的计划，不仅仅是计划本本身，而是包含着传递人的爱。希望他（她）能变得更好，这是一款可以改变你爱人，时刻让你感受到你在被人关心（你在关心别人）的APP。"
