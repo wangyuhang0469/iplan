@@ -22,6 +22,9 @@ import com.example.iplan.R;
 import com.example.iplan.adapter.MyDatabaseHelper;
 import com.example.iplan.base.ParentWithNaviFragment;
 import com.example.iplan.ui.SetPlanActivity;
+import com.example.iplan.ui.SetSendActivity;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -86,14 +89,14 @@ public class HomepageFragment extends ParentWithNaviFragment {
         int a = c.get(Calendar.YEAR);
         date.setText(c.get(Calendar.YEAR) + "年" + (c.get(Calendar.MONTH) + 1) + "月" + c.get(Calendar.DAY_OF_MONTH) + "日");
 
-        simpleAdapter = new SimpleAdapter(getActivity(), getData(), R.layout.listview_item, new String[]{"hour", "dowhat"}, new int[]{R.id.show_time, R.id.title});
+        simpleAdapter = new SimpleAdapter(getActivity(), getData(), R.layout.listview_item, new String[]{"hour", "dowhat"}, new int[]{R.id.show_time_hour, R.id.title});
 
         listview.setAdapter(simpleAdapter);
 
         Add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), SetPlanActivity.class);
+                Intent intent = new Intent(getActivity(), SetSendActivity.class);
                 startActivityForResult(intent,0);
             }
 
@@ -110,6 +113,12 @@ public class HomepageFragment extends ParentWithNaviFragment {
                         delview.setVisibility(View.GONE);
                     }
                 }
+                TextView tv1 = (TextView)view.findViewById(R.id.show_time_hour);
+                TextView tv2 = (TextView)view.findViewById(R.id.title);
+                String TV1 = tv1.getText().toString();
+                String TV2= tv2.getText().toString();
+                SQLiteDatabase db = dbHelper.getWritableDatabase();
+                db.delete("Time","hour = ?",new String[]{TV1});
 
                 delview = view.findViewById(R.id.linear_del);
                 delview.setVisibility(View.VISIBLE);
@@ -185,9 +194,11 @@ public class HomepageFragment extends ParentWithNaviFragment {
         //查询到的数据添加到list集合
         while (cursor.moveToNext()) {
             String time = cursor.getString(5);
+            String min = cursor.getString(6);
             String title = cursor.getString(7);
             Map<String, Object> map = new HashMap<String, Object>();
             map.put("hour", time);
+//            map.put("min",min);
             map.put("dowhat", title);
             list.add(map);
         }
