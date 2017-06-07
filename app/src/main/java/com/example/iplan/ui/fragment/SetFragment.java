@@ -73,6 +73,7 @@ public class SetFragment extends ParentWithNaviFragment {
     RelativeLayout layout_help;
 
 
+
     User user;
     BmobIMUserInfo info;
 

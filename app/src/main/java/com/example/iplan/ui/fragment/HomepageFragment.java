@@ -22,6 +22,7 @@ import android.widget.Toast;
 import com.example.iplan.R;
 import com.example.iplan.adapter.MyDatabaseHelper;
 import com.example.iplan.base.ParentWithNaviFragment;
+import com.example.iplan.model.UserModel;
 import com.example.iplan.ui.SetPlanActivity;
 
 import java.util.ArrayList;
@@ -70,6 +71,7 @@ public class HomepageFragment extends ParentWithNaviFragment {
     protected String title() {
         return "首页";
     }
+    private String username;
 
     public HomepageFragment() {
         // Required empty public constructor
@@ -87,8 +89,9 @@ public class HomepageFragment extends ParentWithNaviFragment {
         ButterKnife.bind(this, view);
         int a = c.get(Calendar.YEAR);
         date.setText(c.get(Calendar.YEAR) + "年" + (c.get(Calendar.MONTH) + 1) + "月" + c.get(Calendar.DAY_OF_MONTH) + "日");
+        username = UserModel.getInstance().getCurrentUser().getUsername();
 
-        simpleAdapter = new SimpleAdapter(getActivity(), getData(), R.layout.listview_item, new String[]{"hour", "dowhat","alarm"}, new int[]{R.id.show_time, R.id.title,R.id.home_alarm});
+        simpleAdapter = new SimpleAdapter(getActivity(), getData(), R.layout.listview_item, new String[]{"hour", "min","dowhat","alarm"}, new int[]{R.id.show_hour,R.id.show_min,R.id.title,R.id.home_alarm});
 
         listview.setAdapter(simpleAdapter);
 
@@ -112,13 +115,14 @@ public class HomepageFragment extends ParentWithNaviFragment {
                         delview.setVisibility(View.GONE);
                     }
                 }
-                TextView tv1 = (TextView)view.findViewById(R.id.show_time);
-                TextView tv2 = (TextView)view.findViewById(R.id.title);
-                String TV1 = tv1.getText().toString();
-                String TV2= tv2.getText().toString();
+                TextView tv1 = (TextView)view.findViewById(R.id.show_hour);
+                TextView tv2 = (TextView)view.findViewById(R.id.show_min);
+                TextView tv3 = (TextView)view.findViewById(R.id.title);
+                String TV1 = informat(tv1.getText().toString());
+                String TV2 = informat(tv2.getText().toString());
+                String TV3= tv3.getText().toString();
                 SQLiteDatabase db = dbHelper.getWritableDatabase();
-                db.delete("Time","hour = ?",new String[]{TV1});
-                toast("已删除");
+                db.delete("Time","hour = ? and min = ?",new String[]{TV1,TV2});
 
 
                 delview = view.findViewById(R.id.linear_del);
@@ -188,18 +192,20 @@ public class HomepageFragment extends ParentWithNaviFragment {
     private List<Map<String, Object>> getData() {
         dbHelper = new MyDatabaseHelper(getActivity(), "Time.db", null, 2);
         SQLiteDatabase DB = dbHelper.getReadableDatabase();
-        String a = "select * from Time where dayOfMonth ='"+c.get(Calendar.DAY_OF_MONTH)+"' group by hour";
+        String a = "select * from Time where dayOfMonth ='"+c.get(Calendar.DAY_OF_MONTH)+"'and month ='"+c.get(Calendar.MONTH)+"'and who ='"+username+ "'group by hour,min";
         Cursor cursor = DB.rawQuery(a, null);
         //清空list
         list.clear();
         //查询到的数据添加到list集合
         while (cursor.moveToNext()) {
-            String time = format(cursor.getString(5))+":"+format(cursor.getString(6));
-            String title = cursor.getString(7);
+            String hour = format(cursor.getString(5));
+            String min = format(cursor.getString(6));
+            String dowhat = cursor.getString(7);
             int isalarm = cursor.getInt(8);
             Map<String, Object> map = new HashMap<String, Object>();
-            map.put("hour", time);
-            map.put("dowhat", title);
+            map.put("hour", hour);
+            map.put("min",min);
+            map.put("dowhat", dowhat);
             map.put("alarm", imageId[isalarm]);
             list.add(map);
         }
@@ -221,4 +227,9 @@ public class HomepageFragment extends ParentWithNaviFragment {
         return str;
     }
 
+    private String informat(String string){
+        int a = Integer.parseInt(string);
+        String b = a+"";
+        return b;
+    }
 }
