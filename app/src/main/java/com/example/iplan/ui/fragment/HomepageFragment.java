@@ -122,7 +122,7 @@ public class HomepageFragment extends ParentWithNaviFragment {
                 String TV2 = informat(tv2.getText().toString());
                 String TV3= tv3.getText().toString();
                 SQLiteDatabase db = dbHelper.getWritableDatabase();
-                db.delete("Time","hour = ? and min = ?",new String[]{TV1,TV2});
+                db.delete("Time","who = ? and month = ? and dayOfmonth = ? and hour = ? and min = ?",new String[]{username,c.get(Calendar.MONTH)+"",c.get(Calendar.DAY_OF_MONTH)+"",TV1,TV2});
 
 
                 delview = view.findViewById(R.id.linear_del);
