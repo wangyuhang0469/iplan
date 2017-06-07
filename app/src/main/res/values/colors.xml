@@ -60,8 +60,8 @@
 
     <color name="text_like_counter">#2b5a83</color>
 
-    <color name="bg_comments">#1afa29</color>
+    <color name="bg_comments">#e0620d</color>
 
 
-    <color name="accent200">#f4ea2a</color>
+    <color name="accent200">#d81e06</color>
 </resources>

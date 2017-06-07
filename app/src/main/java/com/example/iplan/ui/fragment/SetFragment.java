@@ -185,7 +185,6 @@ public class SetFragment extends ParentWithNaviFragment {
         //弹出退出提示框
         AlertDialog.Builder AdBuilder = new AlertDialog.Builder(getActivity());
             AdBuilder.setTitle("确认退出吗？");
-            AdBuilder.setIcon(android.R.drawable.ic_dialog_info);
             AdBuilder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
 
                         @Override
