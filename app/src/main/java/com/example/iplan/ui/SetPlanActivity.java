@@ -44,7 +44,7 @@ public class SetPlanActivity extends Activity {
     @Bind(R.id.edit_dowhat)
     EditText editDowhat;
     @Bind(R.id.isAlarm)
-    Switch isAlarm;
+    TextView isAlarm;
     @Bind(R.id.send)
     Button send;
     @Bind(R.id.tv_left)

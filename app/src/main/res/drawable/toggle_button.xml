@@ -2,8 +2,10 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
 
     <!-- 选中样式 -->
-    <item android:drawable="@drawable/refresh1" android:state_checked="true"/>
+    <item android:drawable="@drawable/alarm_check01"
+        android:state_checked="true"/>
     <!-- 未选中样式 -->
-    <item android:drawable="@drawable/chat_right_qp" android:state_checked="false"/>
+    <item android:drawable="@drawable/alarm_check02"
+        android:state_checked="false"/>
 
 </selector>

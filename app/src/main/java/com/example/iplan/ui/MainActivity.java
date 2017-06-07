@@ -1,6 +1,8 @@
 package com.example.iplan.ui;
 
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -15,6 +17,7 @@ import com.example.iplan.base.BaseActivity;
 import com.example.iplan.bean.User;
 import com.example.iplan.db.NewFriendManager;
 import com.example.iplan.event.RefreshEvent;
+import com.example.iplan.model.UserModel;
 import com.example.iplan.ui.fragment.ContactFragment;
 
 import com.example.iplan.ui.fragment.ConversationFragment;

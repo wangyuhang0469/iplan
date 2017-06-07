@@ -144,76 +144,112 @@
 
 
 
-    <Switch
-        android:id="@+id/isAlarm"
-        android:text="闹钟"
-        android:textSize="20dp"
-        android:textColor="#fff"
-        android:textStyle="bold"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="45dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="5dp"
-        android:textOn="开"
-        android:textOff="关" />
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="闹钟"
+            android:textSize="20dp"
+            android:textColor="#fff"
+            android:gravity="center_vertical"
+            android:paddingTop="10dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:id="@+id/isAlarm"
+            android:layout_marginLeft="15dp"
+            android:textStyle="bold"/>
+        <ToggleButton
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:padding="5dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/toggle_button"
+            android:text=""
+            android:textOff=""
+            android:textOn="" />
+    </RelativeLayout>
+    <!--android:background="@color/transparent" -->
+    <!--android:button="@drawable/toggle_button"-->
+
+
+
+  <!--<Switch-->
+      <!--android:visibility="gone"-->
+      <!--android:id="@+id/isAlarm111"-->
+      <!--android:text="闹钟"-->
+      <!--android:textSize="20dp"-->
+      <!--android:textColor="#fff"-->
+      <!--android:textStyle="bold"-->
+      <!--android:layout_width="match_parent"-->
+      <!--android:layout_height="45dp"-->
+      <!--android:layout_marginLeft="15dp"-->
+      <!--android:layout_marginRight="10dp"-->
+      <!--android:layout_marginTop="5dp"-->
+      <!--android:textOn="开"-->
+      <!--android:textOff="关" />-->
 
 <LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="45dp"
-    android:background="#fff"
-    android:layout_marginTop="10dp">
+  android:layout_width="match_parent"
+  android:layout_height="45dp"
+  android:background="#fff"
+  android:layout_marginTop="10dp">
 
-    <TextView
-        android:layout_width="70dp"
-        android:layout_height="match_parent"
-        android:text="任务"
-        android:textSize="20dp"
-        android:gravity="center"
-        android:textColor="#222"
-        android:id="@+id/textView4" />
+  <TextView
+      android:layout_width="70dp"
+      android:layout_height="match_parent"
+      android:text="任务"
+      android:textSize="20dp"
+      android:gravity="center"
+      android:textColor="#222"
+      android:id="@+id/textView4" />
 
-    <View
-        android:layout_width="1dp"
-        android:layout_height="25dp"
-        android:layout_gravity="center_vertical"
-        android:background="#888"/>
+  <View
+      android:layout_width="1dp"
+      android:layout_height="25dp"
+      android:layout_gravity="center_vertical"
+      android:background="#888"/>
 
-    <EditText
-        android:id="@+id/edit_dowhat"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginLeft="15dp"
-        android:hint="请写下你的计划"
-        android:textColor="#222"
-        android:background="@null"
-        android:textCursorDrawable="@null"/>
+  <EditText
+      android:id="@+id/edit_dowhat"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:layout_marginLeft="15dp"
+      android:hint="请写下你的计划"
+      android:textColor="#222"
+      android:background="@null"
+      android:textCursorDrawable="@null"/>
 </LinearLayout>
 
 
-    <Button
-        android:id="@+id/send"
-        android:layout_width="match_parent"
-        android:layout_height="43dp"
-        android:text="添加计划"
-        android:layout_marginLeft="260dp"
-        android:background="#4DB361"
-        android:textColor="#fff"
-        android:textSize="17sp"
-        android:layout_marginTop="5dp"
-        android:layout_marginRight="5dp"/>
+  <Button
+      android:id="@+id/send"
+      android:layout_width="match_parent"
+      android:layout_height="43dp"
+      android:text="添加计划"
+      android:layout_marginLeft="260dp"
+      android:background="#4DB361"
+      android:textColor="#fff"
+      android:textSize="17sp"
+      android:layout_marginTop="5dp"
+      android:layout_marginRight="5dp"/>
 
-    <Button
-        android:id="@+id/setalarm"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="设置闹钟"/>
-    <ToggleButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/transparent"
-        android:button="@drawable/toggle_button"
-        android:text=""
-        android:textOff=""
-        android:textOn="" />
+  <Button
+      android:id="@+id/setalarm"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="设置闹钟"/>
+  <!--<ToggleButton-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:background="@color/transparent"-->
+        <!--android:button="@drawable/toggle_button"-->
+        <!--android:text=""-->
+        <!--android:textOff=""-->
+        <!--android:textOn="" />-->
 </LinearLayout>
