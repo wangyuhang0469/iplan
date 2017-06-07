@@ -117,7 +117,7 @@ public class SetPlanActivity extends Activity {
             values.put("hour", calendar.get(Calendar.HOUR_OF_DAY) + "");
             values.put("min", calendar.get(Calendar.MINUTE) + "");
             values.put("dowhat", editDowhat.getText().toString());
-            values.put("alarm", isAlarm.toString());
+            values.put("alarm", isAlarm.isChecked());
 
             db.insert("Time", null, values);
             values.clear();

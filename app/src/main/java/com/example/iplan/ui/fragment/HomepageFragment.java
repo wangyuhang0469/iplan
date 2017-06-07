@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.media.Image;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -22,9 +23,6 @@ import com.example.iplan.R;
 import com.example.iplan.adapter.MyDatabaseHelper;
 import com.example.iplan.base.ParentWithNaviFragment;
 import com.example.iplan.ui.SetPlanActivity;
-import com.example.iplan.ui.SetSendActivity;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -78,6 +76,7 @@ public class HomepageFragment extends ParentWithNaviFragment {
     }
 
     private Calendar c = Calendar.getInstance();
+    int[] imageId = new int[] { R.drawable.alarm_check0, R.drawable.alarm_check01};
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -89,14 +88,14 @@ public class HomepageFragment extends ParentWithNaviFragment {
         int a = c.get(Calendar.YEAR);
         date.setText(c.get(Calendar.YEAR) + "年" + (c.get(Calendar.MONTH) + 1) + "月" + c.get(Calendar.DAY_OF_MONTH) + "日");
 
-        simpleAdapter = new SimpleAdapter(getActivity(), getData(), R.layout.listview_item, new String[]{"hour", "dowhat"}, new int[]{R.id.show_time_hour, R.id.title});
+        simpleAdapter = new SimpleAdapter(getActivity(), getData(), R.layout.listview_item, new String[]{"hour", "dowhat","alarm"}, new int[]{R.id.show_time, R.id.title,R.id.home_alarm});
 
         listview.setAdapter(simpleAdapter);
 
         Add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), SetSendActivity.class);
+                Intent intent = new Intent(getActivity(), SetPlanActivity.class);
                 startActivityForResult(intent,0);
             }
 
@@ -113,12 +112,14 @@ public class HomepageFragment extends ParentWithNaviFragment {
                         delview.setVisibility(View.GONE);
                     }
                 }
-                TextView tv1 = (TextView)view.findViewById(R.id.show_time_hour);
+                TextView tv1 = (TextView)view.findViewById(R.id.show_time);
                 TextView tv2 = (TextView)view.findViewById(R.id.title);
                 String TV1 = tv1.getText().toString();
                 String TV2= tv2.getText().toString();
                 SQLiteDatabase db = dbHelper.getWritableDatabase();
                 db.delete("Time","hour = ?",new String[]{TV1});
+                toast("已删除");
+
 
                 delview = view.findViewById(R.id.linear_del);
                 delview.setVisibility(View.VISIBLE);
@@ -193,13 +194,13 @@ public class HomepageFragment extends ParentWithNaviFragment {
         list.clear();
         //查询到的数据添加到list集合
         while (cursor.moveToNext()) {
-            String time = cursor.getString(5);
-            String min = cursor.getString(6);
+            String time = format(cursor.getString(5))+":"+format(cursor.getString(6));
             String title = cursor.getString(7);
+            int isalarm = cursor.getInt(8);
             Map<String, Object> map = new HashMap<String, Object>();
             map.put("hour", time);
-//            map.put("min",min);
             map.put("dowhat", title);
+            map.put("alarm", imageId[isalarm]);
             list.add(map);
         }
         return list;
@@ -211,4 +212,13 @@ public class HomepageFragment extends ParentWithNaviFragment {
         listview.setAdapter(simpleAdapter);
         Toast.makeText(getActivity(), "已刷新", Toast.LENGTH_SHORT).show();
     }
+
+    private String format(String time) {
+        String str = "" + time;
+        if (str.length() == 1) {
+            str = "0" + str;
+        }
+        return str;
+    }
+
 }

@@ -7,12 +7,13 @@
     tools:context="com.example.iplan.ui.fragment.HomepageFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <View  android:layout_height="1px"
-        android:layout_width="match_parent"
-        android:background="#000000"/>
+
+
+
     <ListView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:divider="#ffffffff"
         android:id="@+id/listview"
         android:layout_below="@+id/ChoseDay" />
 
@@ -30,7 +31,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
+        android:layout_alignParentStart="true"
+        android:background="@drawable/qqthem">
         <RelativeLayout
             android:id="@+id/daychoice"
             android:layout_width="wrap_content"
@@ -41,6 +43,8 @@
                 android:id="@+id/btn_last"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="#00ffffff"
+                android:textColor="#fff"
                 android:text="上一天"/>
 
             <TextView
@@ -55,6 +59,8 @@
                 android:layout_toRightOf="@+id/date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="#00ffffff"
+                android:textColor="#fff"
                 android:text="下一天"/>
         </RelativeLayout>
         <RelativeLayout
