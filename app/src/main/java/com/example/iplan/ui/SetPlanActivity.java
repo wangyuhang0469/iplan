@@ -18,6 +18,7 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 import com.example.iplan.R;
 import com.example.iplan.adapter.MyDatabaseHelper;
@@ -44,7 +45,7 @@ public class SetPlanActivity extends Activity {
     @Bind(R.id.edit_dowhat)
     EditText editDowhat;
     @Bind(R.id.isAlarm)
-    TextView isAlarm;
+    ToggleButton isAlarm;
     @Bind(R.id.send)
     Button send;
     @Bind(R.id.tv_left)
