@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
@@ -59,13 +60,14 @@ public class HomepageFragment extends ParentWithNaviFragment {
 //    @Bind(R.id.button2)
 //    Button show;
     @Bind(R.id.btn_last)
-    Button btnLast;
+    ImageView btnLast;
     @Bind(R.id.date)
     TextView date;
     @Bind(R.id.btn_next)
-    Button btnNext;
+    ImageView btnNext;
     @Bind(R.id.Add)
-    ImageView Add;
+    LinearLayout Add;
+
 
     @Override
     protected String title() {
@@ -91,6 +93,10 @@ public class HomepageFragment extends ParentWithNaviFragment {
         date.setText(c.get(Calendar.YEAR) + "年" + (c.get(Calendar.MONTH) + 1) + "月" + c.get(Calendar.DAY_OF_MONTH) + "日");
         username = UserModel.getInstance().getCurrentUser().getUsername();
 
+        View parentView = (View) Add.getParent();// 解决遮盖问题
+        Add.bringToFront();
+        parentView.requestLayout();
+        parentView.invalidate();
         simpleAdapter = new SimpleAdapter(getActivity(), getData(), R.layout.listview_item, new String[]{"hour", "min","dowhat","alarm"}, new int[]{R.id.show_hour,R.id.show_min,R.id.title,R.id.home_alarm});
 
         listview.setAdapter(simpleAdapter);
@@ -216,7 +222,7 @@ public class HomepageFragment extends ParentWithNaviFragment {
     public void onViewClicked() {
         getData();
         listview.setAdapter(simpleAdapter);
-        Toast.makeText(getActivity(), "已刷新", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(), "刷新成功", Toast.LENGTH_SHORT).show();
     }
 
     private String format(String time) {
