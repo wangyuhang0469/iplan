@@ -202,7 +202,6 @@ public class MainActivity extends BaseActivity implements ObseverListener {
      */
     @Subscribe
     public void onEventMainThread(RefreshEvent event){
-        toast("主页接收到自定义消息");
         log("---主页接收到自定义消息---");
         checkRedPoint();
     }
