@@ -63,10 +63,10 @@
         android:layout_marginLeft="100dp"
         android:background="@drawable/line_b" />
 
-        <View  android:layout_height="1px"
-        android:layout_width="match_parent"
-        android:background="#000000"
-        />
+        <!--<View  android:layout_height="1px"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:background="#000000"-->
+        <!--/>-->
     <LinearLayout
         android:id="@+id/linear_del"
         android:layout_width="match_parent"
