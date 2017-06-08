@@ -97,11 +97,11 @@
 
         <ImageView
             android:id="@+id/image"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:src="@drawable/home_icon1"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/icon_circle"
             android:layout_below="@+id/view_1"
-            android:layout_marginLeft="89dp" />
+            android:layout_marginLeft="91.5dp" />
 
         <RelativeLayout
         android:id="@+id/relative"

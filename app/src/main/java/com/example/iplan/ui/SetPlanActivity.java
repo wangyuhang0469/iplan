@@ -52,8 +52,6 @@ public class SetPlanActivity extends Activity {
     ImageView back;
     @Bind(R.id.date_tv)
     TextView date_tv;
-    @Bind(R.id.setalarm)
-    Button setalarm;
 
     private MyDatabaseHelper dbHelper;
     Calendar calendar;
@@ -74,8 +72,6 @@ public class SetPlanActivity extends Activity {
     private int n;
     private int i;
 
-    private Date dateStart;
-    private Date dateEnd;
 
 
     @Override
@@ -165,6 +161,10 @@ public class SetPlanActivity extends Activity {
                 values.put("alarm", isAlarm.isChecked());
                 db.insert("Time", null, values);
                 values.clear();
+                if (isAlarm.isChecked()){
+                int id = calendar.get(Calendar.MONTH)*1000000 + calendar.get(Calendar.DAY_OF_MONTH)*10000 + calendar.get(Calendar.HOUR_OF_DAY)*100+calendar.get(Calendar.MINUTE);
+                AlarmManagerUtil.setAlarm(this, 1, calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE), id, 0, editDowhat.getText().toString(), ring);
+                Toast.makeText(this, "闹钟已设置", Toast.LENGTH_SHORT).show();}
                 Intent intent = getIntent();
                 setResult(RESULT_OK, intent);
                 finish();
@@ -181,26 +181,6 @@ public class SetPlanActivity extends Activity {
             }
 
 
-
-
-
-//
-//            SQLiteDatabase db = dbHelper.getWritableDatabase();
-//            ContentValues values = new ContentValues();
-//            String who = UserModel.getInstance().getCurrentUser().getUsername();
-//            values.put("who", who);
-//            values.put("year", calendar.get(Calendar.YEAR) + "");
-//            values.put("month", calendar.get(Calendar.MONTH) + "");
-//            values.put("dayOfMonth", calendar.get(Calendar.DAY_OF_MONTH) + "");
-//            values.put("hour", calendar.get(Calendar.HOUR_OF_DAY) + "");
-//            values.put("min", calendar.get(Calendar.MINUTE) + "");
-//            values.put("dowhat", editDowhat.getText().toString());
-//            values.put("alarm", isAlarm.toString());
-//            db.insert("Time", null, values);
-//            values.clear();
-//            Intent intent = getIntent();
-//            setResult(RESULT_OK, intent);
-//            finish();
 
 
         } else {
@@ -240,9 +220,5 @@ public class SetPlanActivity extends Activity {
         }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH)).show();
     }
 
-    @OnClick(R.id.setalarm)
-    public void onSetAlarmClicked() {
-        AlarmManagerUtil.setAlarm(this, 1, calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE), 1, 0, "闹钟响了", ring);
-        Toast.makeText(this, calendar.get(Calendar.HOUR_OF_DAY)+""+calendar.get(Calendar.MINUTE), Toast.LENGTH_SHORT).show();
-    }
+
 }

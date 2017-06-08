@@ -164,9 +164,9 @@
             android:textStyle="bold"/>
         <ToggleButton
             android:id="@+id/isAlarm"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:padding="5dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:padding="10dp"
             android:layout_alignParentRight="true"
             android:layout_marginRight="15dp"
             android:background="@drawable/toggle_button"
@@ -239,17 +239,5 @@
       android:layout_marginTop="5dp"
       android:layout_marginRight="5dp"/>
 
-  <Button
-      android:id="@+id/setalarm"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:text="设置闹钟"/>
-  <!--<ToggleButton-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:background="@color/transparent"-->
-        <!--android:button="@drawable/toggle_button"-->
-        <!--android:text=""-->
-        <!--android:textOff=""-->
-        <!--android:textOn="" />-->
+
 </LinearLayout>

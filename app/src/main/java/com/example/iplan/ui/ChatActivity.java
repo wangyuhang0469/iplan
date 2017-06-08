@@ -32,6 +32,7 @@ import com.example.iplan.adapter.ChatAdapter;
 import com.example.iplan.adapter.OnRecyclerViewListener;
 import com.example.iplan.base.ParentWithNaviActivity;
 import com.example.iplan.bean.ScheduleMessage;
+import com.example.iplan.model.UserModel;
 import com.example.iplan.planclass.Plan;
 import com.example.iplan.util.Util;
 import com.orhanobut.logger.Logger;
@@ -438,10 +439,12 @@ public class ChatActivity extends ParentWithNaviActivity implements ObseverListe
 
 //        sendSchedukeMessage();
 //        info = (BmobIMUserInfo) getBundle().getSerializable("userInfo");
-//        Bundle bundle = new Bundle();
 //        bundle.putSerializable("c",c);
 //        startActivity(SetSendActivity.class, bundle);
             Intent intent = new Intent(this,SetSendActivity.class);
+            Bundle bundle = new Bundle();
+            bundle.putString("who",c.getConversationTitle());
+            intent.putExtras(bundle);
             startActivityForResult(intent,0);
         }
 //        -------------------------
@@ -636,20 +639,6 @@ public class ChatActivity extends ParentWithNaviActivity implements ObseverListe
         Logger.i("聊天页面接收到消息：" + list.size());
         //当注册页面消息监听时候，有消息（包含离线消息）到来时会回调该方法
         for (int i = 0; i < list.size(); i++) {
-//            String a=list.get(i).getMessage().getExtra();
-//            JSONObject jsonobject = JSONObject.fromObject(a);
-//            int hour = jsonobject.getInt("hour");
-//            int min = jsonobject.getInt("min");
-//            calendar.setTimeInMillis(System.currentTimeMillis());
-//            calendar.set(Calendar.HOUR_OF_DAY, hour);
-//            calendar.set(Calendar.MINUTE, min);
-//            calendar.set(Calendar.SECOND, 0);
-//            calendar.set(Calendar.MILLISECOND, 0);
-//            Intent intent = new Intent(ChatActivity.this, AlarmReceiver.class);
-//            PendingIntent pendingIntent = PendingIntent.getBroadcast(ChatActivity.this, 0, intent, 0);
-//            AlarmManager alarmManager = (AlarmManager)getSystemService(ALARM_SERVICE);
-//            alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
-//            toast(hour +":" +min);
             addMessage2Chat(list.get(i));
         }
     }
@@ -721,6 +710,8 @@ public class ChatActivity extends ParentWithNaviActivity implements ObseverListe
 //        map.put("name", currentUser.getUsername());//发送者姓名，这里只是举个例子，其实可以不需要传发送者的信息过去
 //        map.put("avatar",currentUser.getAvatar());//发送者的头像
 //        map.put("uid",currentUser.getObjectId());//发送者的uid
+        int b;
+        if (a.isAlarm()){b=1;}else {b=0;}
         map.put("who", a.getWho());
         map.put("year", a.getYear());
         map.put("month", a.getMonth());
@@ -728,20 +719,11 @@ public class ChatActivity extends ParentWithNaviActivity implements ObseverListe
         map.put("hour", a.getHour());
         map.put("min", a.getMin());
         map.put("dowhat", a.getDowhat());
-        map.put("alarm", a.isAlarm());
-        map.put("createTime", a.getTime());
+        map.put("alarm", b);
+//        map.put("createTime", a.getTime());
         msg.setExtraMap(map);
         c.sendMessage(msg, listener);
-//        c.sendMessage(msg, new MessageSendListener() {
-//            @Override
-//            public void done(BmobIMMessage msg, BmobException e) {
-//                if (e == null) {//发送成功
-//                    toast("发送计划表成功");
-//                } else {//发送失败
-//                    toast("发送失败:" + e.getMessage());
-//                }
-//            }
-//        });
+
     }
     @Override
     protected void onResume() {

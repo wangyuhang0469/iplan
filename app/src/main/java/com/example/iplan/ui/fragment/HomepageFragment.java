@@ -97,6 +97,7 @@ public class HomepageFragment extends ParentWithNaviFragment {
         Add.bringToFront();
         parentView.requestLayout();
         parentView.invalidate();
+
         simpleAdapter = new SimpleAdapter(getActivity(), getData(), R.layout.listview_item, new String[]{"hour", "min","dowhat","alarm"}, new int[]{R.id.show_hour,R.id.show_min,R.id.title,R.id.home_alarm});
 
         listview.setAdapter(simpleAdapter);
@@ -198,7 +199,7 @@ public class HomepageFragment extends ParentWithNaviFragment {
     private List<Map<String, Object>> getData() {
         dbHelper = new MyDatabaseHelper(getActivity(), "Time.db", null, 2);
         SQLiteDatabase DB = dbHelper.getReadableDatabase();
-        String a = "select * from Time where dayOfMonth ='"+c.get(Calendar.DAY_OF_MONTH)+"'and month ='"+c.get(Calendar.MONTH)+"'and who ='"+username+ "'group by hour,min";
+        String a = "select * from Time where dayOfMonth ='"+c.get(Calendar.DAY_OF_MONTH)+"'and month ='"+c.get(Calendar.MONTH)+"'and who ='"+username+ "'group by hour,min ORDER BY  cast(hour as int) ASC, cast(min as int) ASC";
         Cursor cursor = DB.rawQuery(a, null);
         //清空list
         list.clear();

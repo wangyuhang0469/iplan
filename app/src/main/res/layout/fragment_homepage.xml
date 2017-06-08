@@ -9,54 +9,10 @@
     <!-- TODO: Update blank fragment layout -->
 
 
-    <LinearLayout
-        android:id="@+id/Add"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginBottom="28dp"
-        android:layout_marginRight="19dp"
-        android:orientation="vertical">
-    <ImageView
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:src="@drawable/icon_add"
-        android:layout_marginRight="10dp"
-        />
-    <!--<TextView-->
-        <!--android:layout_width="50dp"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:text="新计划"-->
-        <!--android:textColor="#1A6BE6"-->
-        <!--android:textStyle="bold"-->
-        <!--android:textSize="16sp"/>-->
-    </LinearLayout>
-
-    <ListView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:divider="#ffffffff"
-        android:id="@+id/listview"
-        android:layout_below="@+id/ChoseDay" />
-
-    <!--<Button-->
-        <!--android:id="@+id/button1"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:text="刷新"-->
-        <!--android:layout_alignParentLeft="true"-->
-        <!--android:layout_alignParentBottom="true"/>-->
-
-    <View  android:layout_height="1px"
-        android:layout_width="match_parent"
-        android:background="#000000"
-        android:layout_below="@+id/ChoseDay"/>
-
     <RelativeLayout
         android:id="@+id/ChoseDay"
         android:layout_width="match_parent"
-        android:layout_height="135dp"
+        android:layout_height="133dp"
         android:background="@drawable/bg_home_top"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
@@ -94,15 +50,15 @@
                 android:src="@drawable/icon_right" />
         </RelativeLayout>
 
-            <ImageView
-                android:id="@+id/refresh"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@drawable/icon_refresh"
-                android:padding="10dp"
-                android:layout_margin="6dp"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentRight="true"/>
+        <ImageView
+            android:id="@+id/refresh"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/icon_refresh"
+            android:padding="10dp"
+            android:layout_margin="6dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"/>
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -114,6 +70,81 @@
         </RelativeLayout>
 
     </RelativeLayout>
+
+
+
+    <LinearLayout
+        android:id="@+id/Add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="28dp"
+        android:layout_marginRight="19dp"
+        android:orientation="vertical">
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/icon_add"
+        android:layout_marginRight="10dp"
+        />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_below="@id/ChoseDay">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="78dp"
+                android:layout_marginTop="20dp"
+                android:textSize="16dp"
+                android:text="今日还没有计划"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="123dp"
+                android:layout_marginTop="4dp"
+                android:textSize="16dp"
+                android:text="快去创建一个吧！"/>
+        </LinearLayout>
+        <ImageView
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="14dp"
+            android:layout_marginLeft="7dp"
+            android:src ="@drawable/icon_noplan"/>
+    </LinearLayout>
+
+    <ListView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:divider="#00ffffff"
+        android:dividerHeight="0dip"
+        android:id="@+id/listview"
+        android:layout_below="@id/ChoseDay" />
+
+    <!--<Button-->
+        <!--android:id="@+id/button1"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="刷新"-->
+        <!--android:layout_alignParentLeft="true"-->
+        <!--android:layout_alignParentBottom="true"/>-->
+    <!--<View  android:layout_height="1px"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:background="#000000"-->
+        <!--android:layout_below="@+id/ChoseDay" />-->
+
+
+
 
     <!--<Button-->
         <!--android:id="@+id/button2"-->
