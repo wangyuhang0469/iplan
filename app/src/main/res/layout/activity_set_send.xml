@@ -232,12 +232,13 @@
         android:layout_width="match_parent"
         android:layout_height="43dp"
         android:text="添加计划"
+        style="@style/SmsButton"
         android:layout_marginLeft="260dp"
-        android:background="#4DB361"
         android:textColor="#fff"
         android:textSize="17sp"
         android:layout_marginTop="5dp"
         android:layout_marginRight="5dp"/>
+    <!--android:background="#4DB361"-->
 
 
 </LinearLayout>
