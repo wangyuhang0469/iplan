@@ -53,16 +53,9 @@ public class HomepageFragment extends ParentWithNaviFragment {
     private boolean delState = false;
 
 
-    //    @Bind(R.id.hour)
-//    EditText hour;
-//    @Bind(R.id.min)
-//    EditText min;
-//    @Bind(R.id.dowhat)
-//    EditText dowhat;
+
     @Bind(R.id.listview)
     ListView listview;
-//    @Bind(R.id.button2)
-//    Button show;
     @Bind(R.id.btn_last)
     ImageView btnLast;
     @Bind(R.id.date)
@@ -94,7 +87,6 @@ public class HomepageFragment extends ParentWithNaviFragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_homepage, container, false);
         ButterKnife.bind(this, view);
-        int a = c.get(Calendar.YEAR);
         date.setText(c.get(Calendar.YEAR) + "年" + (c.get(Calendar.MONTH) + 1) + "月" + c.get(Calendar.DAY_OF_MONTH) + "日");
 
         //年月日日期点击事件
@@ -263,7 +255,7 @@ public class HomepageFragment extends ParentWithNaviFragment {
     private List<Map<String, Object>> getData() {
         dbHelper = new MyDatabaseHelper(getActivity(), "Time.db", null, 2);
         SQLiteDatabase DB = dbHelper.getReadableDatabase();
-        String a = "select * from Time where dayOfMonth ='"+c.get(Calendar.DAY_OF_MONTH)+"'and month ='"+c.get(Calendar.MONTH)+"'and who ='"+username+ "'group by hour,min ORDER BY  cast(hour as int) ASC, cast(min as int) ASC";
+        String a = "select * from Time where dayOfMonth ='"+c.get(Calendar.DAY_OF_MONTH)+"'and month ='"+c.get(Calendar.MONTH)+"'and  who ='"+username+"'group by hour,min ORDER BY  cast(hour as int) ASC, cast(min as int) ASC";
         Cursor cursor = DB.rawQuery(a, null);
         //清空list
         list.clear();

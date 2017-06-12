@@ -454,10 +454,14 @@ public class ChatActivity extends ParentWithNaviActivity implements ObseverListe
 //        sendOtherMessage();
 //        sendVideoMessage();
 
-//    @OnClick(R.id.tv_camera)
-//    public void onCameraClick(View view) {
-//        sendRemoteImageMessage();
-//    }
+    @OnClick(R.id.tv_previousplans)
+    public void ontvppClick(View view) {
+        Intent intent = new Intent(this,PreviousPlansActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putString("who",c.getConversationTitle());
+        intent.putExtras(bundle);
+        startActivity(intent);
+    }
 //
 //    @OnClick(R.id.tv_location)
 //    public void onLocationClick(View view) {

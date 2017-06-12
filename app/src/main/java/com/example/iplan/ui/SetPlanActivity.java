@@ -195,7 +195,7 @@ public class SetPlanActivity extends Activity {
 
                 calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
                 calendar.set(Calendar.MONTH, month);
-                calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                calendar.set(Calendar.YEAR, year);
                 editYear.setText(format(calendar.get(Calendar.YEAR)));
                 editMonth.setText(format(calendar.get(Calendar.MONTH) + 1));
                 editDayOfMonth.setText(format(calendar.get(Calendar.DAY_OF_MONTH)));
