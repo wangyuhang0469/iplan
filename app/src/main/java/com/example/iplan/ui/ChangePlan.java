@@ -21,14 +21,14 @@ public class ChangePlan extends AppCompatActivity {
     TextView editDayOfMonth;
     @Bind(R.id.edit_dowhat)
     EditText editDowhat;
-    @Bind(R.id.date_tv)
-    TextView date_tv;
+    @Bind(R.id.chose_time)
+    TextView chosetime;
 
 
-    private String hour = "null";
-    private String min="null";
-    private String title="null";
-    private String time="null";
+    public String hour = "null";
+    public String min="null";
+    public String title="null";
+    public String time="null";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +43,7 @@ public class ChangePlan extends AppCompatActivity {
         time = hour+ ":" +min;
         Toast.makeText(this,time,Toast.LENGTH_LONG).show();
 
-        date_tv.setText(time);
+//        chosetime.setText("title");
 
     }
 }
