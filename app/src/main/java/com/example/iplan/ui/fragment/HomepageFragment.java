@@ -2,6 +2,7 @@ package com.example.iplan.ui.fragment;
 
 
 import android.app.Activity;
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -13,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -24,7 +26,9 @@ import com.example.iplan.R;
 import com.example.iplan.adapter.MyDatabaseHelper;
 import com.example.iplan.base.ParentWithNaviFragment;
 import com.example.iplan.model.UserModel;
+import com.example.iplan.ui.ChangePlan;
 import com.example.iplan.ui.SetPlanActivity;
+import com.example.iplan.ui.SetSendActivity;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -80,6 +84,7 @@ public class HomepageFragment extends ParentWithNaviFragment {
     }
 
     private Calendar c = Calendar.getInstance();
+    private Calendar calendar = Calendar.getInstance();
     int[] imageId = new int[] { R.drawable.alarm_check0, R.drawable.alarm_check01};
 
     @Override
@@ -91,6 +96,35 @@ public class HomepageFragment extends ParentWithNaviFragment {
         ButterKnife.bind(this, view);
         int a = c.get(Calendar.YEAR);
         date.setText(c.get(Calendar.YEAR) + "年" + (c.get(Calendar.MONTH) + 1) + "月" + c.get(Calendar.DAY_OF_MONTH) + "日");
+
+        //年月日日期点击事件
+        date.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                new DatePickerDialog(getActivity(), android.R.style.Theme_DeviceDefault_Light_Dialog, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+
+                        c.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                        c.set(Calendar.MONTH, month);
+                        c.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                        calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                        calendar.set(Calendar.MONTH, month);
+                        calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                        String year1=format(format(calendar.get(Calendar.YEAR)));
+                        String mon=format(format(calendar.get(Calendar.MONTH) + 1));
+                        String day=format(format(calendar.get(Calendar.DAY_OF_MONTH)));
+
+                        String date1=year1+"年"+mon+"月"+day+"日";
+                        date.setText(date1);
+                        getData();
+                        listview.setAdapter(simpleAdapter);
+                    }
+                }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH)).show();
+
+            }
+        });
         username = UserModel.getInstance().getCurrentUser().getUsername();
 
         View parentView = (View) Add.getParent();// 解决遮盖问题
@@ -98,7 +132,8 @@ public class HomepageFragment extends ParentWithNaviFragment {
         parentView.requestLayout();
         parentView.invalidate();
 
-        simpleAdapter = new SimpleAdapter(getActivity(), getData(), R.layout.listview_item, new String[]{"hour", "min","dowhat","alarm"}, new int[]{R.id.show_hour,R.id.show_min,R.id.title,R.id.home_alarm});
+        simpleAdapter = new SimpleAdapter(getActivity(), getData(), R.layout.listview_item, new String[]{"hour", "min","dowhat","alarm"},
+                new int[]{R.id.show_hour,R.id.show_min,R.id.title,R.id.home_alarm});
 
         listview.setAdapter(simpleAdapter);
 
@@ -111,6 +146,9 @@ public class HomepageFragment extends ParentWithNaviFragment {
 
 
         });
+
+
+
         listview.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             private View delview;
 
@@ -129,7 +167,8 @@ public class HomepageFragment extends ParentWithNaviFragment {
                 String TV2 = informat(tv2.getText().toString());
                 String TV3= tv3.getText().toString();
                 SQLiteDatabase db = dbHelper.getWritableDatabase();
-                db.delete("Time","who = ? and month = ? and dayOfmonth = ? and hour = ? and min = ?",new String[]{username,c.get(Calendar.MONTH)+"",c.get(Calendar.DAY_OF_MONTH)+"",TV1,TV2});
+                db.delete("Time","who = ? and month = ? and dayOfmonth = ? and hour = ? and min = ?",
+                        new String[]{username,c.get(Calendar.MONTH)+"",c.get(Calendar.DAY_OF_MONTH)+"",TV1,TV2});
 
 
                 delview = view.findViewById(R.id.linear_del);
@@ -155,7 +194,32 @@ public class HomepageFragment extends ParentWithNaviFragment {
                 return true;
             }
         });
+        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+
+                TextView tv1 = (TextView)view.findViewById(R.id.show_hour);
+                TextView tv2 = (TextView)view.findViewById(R.id.show_min);
+                TextView tv3 = (TextView)view.findViewById(R.id.title);
+                String TV1 = tv1.getText().toString();
+                String TV2 = tv2.getText().toString();
+                String TV3= tv3.getText().toString();
+
+                Intent intent = new Intent(getActivity(),ChangePlan.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("hour",TV1);
+                bundle.putString("min",TV2);
+                bundle.putString("title",TV3);
+                intent.putExtras(bundle);
+                startActivity(intent);
+
+
+
+            }
+        });
         return view;
+
     }
 
     @Override
@@ -233,10 +297,23 @@ public class HomepageFragment extends ParentWithNaviFragment {
         }
         return str;
     }
-
+    private String format(int time) {
+        String str = "" + time;
+        if (str.length() == 1) {
+            str = "0" + str;
+        }
+        return str;
+    }
     private String informat(String string){
         int a = Integer.parseInt(string);
         String b = a+"";
         return b;
     }
+
+
+
+
+
+
+
 }

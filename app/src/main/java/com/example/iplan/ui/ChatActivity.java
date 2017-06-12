@@ -434,6 +434,8 @@ public class ChatActivity extends ParentWithNaviActivity implements ObseverListe
         sendMessage();
     }
 
+
+
     @OnClick(R.id.tv_picture)
     public void onPictureClick(View view) {
 

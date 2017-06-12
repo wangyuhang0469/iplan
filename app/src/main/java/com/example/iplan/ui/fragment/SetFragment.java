@@ -119,6 +119,7 @@ public class SetFragment extends ParentWithNaviFragment {
         Intent intent = new Intent();
         intent.setClass(getActivity(), AboutUs.class);
         startActivity(intent);
+
     }
 
     //跳转到关于用户资料页

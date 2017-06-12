@@ -20,13 +20,9 @@
     <!-- 通知震动 -->
     <uses-permission android:name="android.permission.VIBRATE" />
 
-
-    <!--&lt;!&ndash;拨打电话&ndash;&gt;-->
-    <!--<uses-permission android:name="android.permission.CALL_PHONE">-->
-    <!--</uses-permission>-->
-
-
-
+    <!-- &lt;!&ndash;拨打电话&ndash;&gt; -->
+    <!-- <uses-permission android:name="android.permission.CALL_PHONE"> -->
+    <!-- </uses-permission> -->
     <application
         android:name=".BmobIMApplication"
         android:allowBackup="true"
@@ -77,22 +73,21 @@
         <service android:name="cn.bmob.newim.core.service.ReConnectService" />
         <service android:name="cn.bmob.newim.core.service.HeartBeatService" />
 
-        <receiver android:name="com.example.iplan.clock.LoongggAlarmReceiver">
+        <receiver android:name=".clock.LoongggAlarmReceiver">
             <intent-filter>
-                <action android:name="com.example.iplan.clock"/>
+                <action android:name="com.example.iplan.clock" />
             </intent-filter>
         </receiver>
 
         <activity
             android:name=".clock.ClockAlarmActivity"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar"
-            ></activity>
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <activity android:name=".ui.UserInfoChange" />
         <activity android:name=".bean.ScheduleMessage" />
         <activity android:name=".ui.fragment.AboutUs" />
         <activity android:name=".ui.Share" />
-        <activity android:name=".ui.FeedBack"></activity>
-        <activity android:name=".ui.SetPlanActivity"/>
+        <activity android:name=".ui.FeedBack" />
+        <activity android:name=".ui.SetPlanActivity" />
         <activity android:name=".ui.FeedBack" />
         <activity android:name=".bean.ScheduleMessage" />
         <activity android:name=".ui.SetSendActivity" />
@@ -105,7 +100,8 @@
             android:value="@integer/google_play_services_version" />
 
         <activity android:name=".ui.MakeUserInfo" />
-        <activity android:name=".ui.Help"></activity>
+        <activity android:name=".ui.Help" />
+        <activity android:name=".ui.ChangePlan"></activity>
     </application>
 
 </manifest>

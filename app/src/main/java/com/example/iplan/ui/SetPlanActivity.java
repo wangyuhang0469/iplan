@@ -56,21 +56,7 @@ public class SetPlanActivity extends Activity {
     private MyDatabaseHelper dbHelper;
     Calendar calendar;
     private int ring = 1;
-    private int year1;
-    private int year2;
-    private int month1;
-    private int month2;
-    private int day1;
-    private int day2;
-    private int hour1;
-    private int hour2;
-    private int min;
-    private int min2;
-    private String a;
-    private String b;
-    private int m;
-    private int n;
-    private int i;
+
 
 
 
@@ -127,24 +113,23 @@ public class SetPlanActivity extends Activity {
 
             //获取系统时间
            Calendar c = Calendar.getInstance();
-            year1 = c.get(Calendar.YEAR);
-            month1 = c.get(Calendar.MONTH);
-            day1 = c.get(Calendar.DAY_OF_MONTH);
-            hour1 = c.get(Calendar.HOUR_OF_DAY);
-            min = c.get(Calendar.MINUTE);
-            a=String.valueOf(year1)+String.valueOf(month1)+String.valueOf(day1)+String.valueOf(hour1)+String.valueOf(min);
-
+            String year1 =format( c.get(Calendar.YEAR)-2000);
+            String month1 =format( c.get(Calendar.MONTH));
+            String day1 =format( c.get(Calendar.DAY_OF_MONTH));
+            String hour1 =format( c.get(Calendar.HOUR_OF_DAY));
+            String min =format( c.get(Calendar.MINUTE));
+            String a=year1+month1+day1+hour1+min;
             //获取制定计划选中时间
-            year2=calendar.get(Calendar.YEAR);
-            month2=calendar.get(Calendar.MONTH);
-            day2=calendar.get(Calendar.DAY_OF_MONTH);
-            hour2= calendar.get(Calendar.HOUR_OF_DAY);
-            min2=calendar.get(Calendar.MINUTE);
-            b=String.valueOf(year2)+String.valueOf(month2)+String.valueOf(day2)+String.valueOf(hour2)+String.valueOf(min2);
-            m=Integer.valueOf(a).intValue();
-            n=Integer.valueOf(b).intValue();
+            String year2=format(calendar.get(Calendar.YEAR)-2000);
+            String month2=format(calendar.get(Calendar.MONTH));
+            String day2=format(calendar.get(Calendar.DAY_OF_MONTH));
+            String hour2=format(calendar.get(Calendar.HOUR_OF_DAY));
+            String min2=format(calendar.get(Calendar.MINUTE));
+            String b=year2+month2+day2+hour2+min2;
+            int m=Integer.valueOf(a).intValue();
+            int n=Integer.valueOf(b).intValue();
 
-            i=m-n;
+            int i=m-n;
 
 
             if (i<0) {
