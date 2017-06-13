@@ -126,8 +126,8 @@ public class HomepageFragment extends ParentWithNaviFragment {
         parentView.requestLayout();
         parentView.invalidate();
 
-        simpleAdapter = new SimpleAdapter(getActivity(), getData(), R.layout.listview_item, new String[]{"hour", "min","dowhat","alarm"},
-                new int[]{R.id.show_hour,R.id.show_min,R.id.title,R.id.home_alarm});
+        simpleAdapter = new SimpleAdapter(getActivity(), getData(), R.layout.listview_item, new String[]{"hour", "min","dowhat","alarm","text_alarm"},
+                new int[]{R.id.show_hour,R.id.show_min,R.id.title,R.id.home_alarm,R.id.text_alarm});
 
         listview.setAdapter(simpleAdapter);
 
@@ -194,9 +194,11 @@ public class HomepageFragment extends ParentWithNaviFragment {
                 TextView tv1 = (TextView)view.findViewById(R.id.show_hour);
                 TextView tv2 = (TextView)view.findViewById(R.id.show_min);
                 TextView tv3 = (TextView)view.findViewById(R.id.title);
+                TextView tv4 = (TextView)view.findViewById(R.id.text_alarm);
                 String year1=format(c.get(Calendar.YEAR));
                 String mon=format(c.get(Calendar.MONTH) + 1);
                 String day=format(c.get(Calendar.DAY_OF_MONTH));
+                String text_alarm = tv4.getText().toString();
                 String TV1 = tv1.getText().toString();
                 String TV2 = tv2.getText().toString();
                 String TV3= tv3.getText().toString();
@@ -212,22 +214,13 @@ public class HomepageFragment extends ParentWithNaviFragment {
                 bundle.putString("year",TV4);
                 bundle.putString("mon",TV5);
                 bundle.putString("day",TV6);
+                bundle.putString("text_alarm",text_alarm);
 
                 intent.putExtras(bundle);
                 startActivityForResult(intent,0);
             }
         });
 
-//        protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-//            super.onActivityResult(requestCode, resultCode, data);
-////            if(requestCode==0 && resultCode==RESULT_OK){
-////                Bundle bundle = data.getExtras();
-////                Plan a = (Plan) bundle.getSerializable("a");
-////                if(bundle!=null)
-////                    sendSchedukeMessage(a);
-////                toast(a.getWho());
-////            }
-//        }
 
 
         return view;
@@ -251,6 +244,12 @@ public class HomepageFragment extends ParentWithNaviFragment {
             getData();
             listview.setAdapter(simpleAdapter);
             toast("添加成功");
+        }
+
+        if(requestCode==0 && resultCode== 2){
+            getData();
+            listview.setAdapter(simpleAdapter);
+            toast("修改成功");
         }
     }
 
@@ -289,6 +288,7 @@ public class HomepageFragment extends ParentWithNaviFragment {
             map.put("hour", hour);
             map.put("min",min);
             map.put("dowhat", dowhat);
+            map.put("text_alarm",isalarm);
             map.put("alarm", imageId[isalarm]);
             list.add(map);
         }

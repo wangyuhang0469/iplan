@@ -231,7 +231,7 @@
         android:id="@+id/change"
         android:layout_width="match_parent"
         android:layout_height="43dp"
-        android:text="添加计划"
+        android:text="修改计划"
         android:layout_marginLeft="260dp"
         style="@style/SmsButton"
         android:textColor="#fff"

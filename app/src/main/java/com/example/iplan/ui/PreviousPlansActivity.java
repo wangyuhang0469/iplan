@@ -43,7 +43,7 @@ public class PreviousPlansActivity extends Activity {
         who = bunde.getString("who");
         listView = (ListView)findViewById(R.id.list);
 
-        simpleAdapter = new SimpleAdapter(this, getData(), R.layout.item, new String[]{"hour", "min","dowhat","alarm"}, new int[]{R.id.show_hour,R.id.show_min,R.id.title,R.id.home_alarm});
+        simpleAdapter = new SimpleAdapter(this, getData(), R.layout.item, new String[]{"hour", "min","dowhat","alarm","year","month","dayOfMonth"}, new int[]{R.id.show_hour,R.id.show_min,R.id.title,R.id.home_alarm,R.id.show_year,R.id.show_month,R.id.show_day});
 
         listView.setAdapter(simpleAdapter);
 
@@ -52,7 +52,7 @@ public class PreviousPlansActivity extends Activity {
     private List<Map<String, Object>> getData() {
         dbHelper = new MyDatabaseHelper(this, "Time.db", null, 2);
         SQLiteDatabase DB = dbHelper.getReadableDatabase();
-        String a = "select * from Time where who ='"+who+ "'group by hour,min ORDER BY  cast(hour as int) ASC, cast(min as int) ASC";
+        String a = "select * from Time where who ='"+who+ "'group by month,dayOfMonth,hour,min ORDER BY cast(year as int) DESC, cast(month as int) DESC, cast(dayOfMonth as int) DESC, cast(hour as int) ASC, cast(min as int) ASC";
         Cursor cursor = DB.rawQuery(a, null);
         //清空list
         list.clear();
@@ -60,11 +60,17 @@ public class PreviousPlansActivity extends Activity {
         while (cursor.moveToNext()) {
             String hour = format(cursor.getString(5));
             String min = format(cursor.getString(6));
+            String year = format(cursor.getString(2));
+            String month = format(cursor.getString(3));
+            String dayOfMonth = format(cursor.getString(4));
             String dowhat = cursor.getString(7);
             int isalarm = cursor.getInt(8);
             Map<String, Object> map = new HashMap<String, Object>();
             map.put("hour", hour);
             map.put("min",min);
+            map.put("year",year);
+            map.put("month",month);
+            map.put("dayOfMonth",dayOfMonth);
             map.put("dowhat", dowhat);
             map.put("alarm", imageId[isalarm]);
             list.add(map);
