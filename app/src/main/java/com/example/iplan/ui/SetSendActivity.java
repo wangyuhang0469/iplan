@@ -132,7 +132,7 @@ public class SetSendActivity extends Activity {
 
             //获取系统时间
             Calendar c = Calendar.getInstance();
-            year1 = c.get(Calendar.YEAR);
+            year1 = c.get(Calendar.YEAR)-2000;
             month1 = c.get(Calendar.MONTH);
             day1 = c.get(Calendar.DAY_OF_MONTH);
             hour1 = c.get(Calendar.HOUR_OF_DAY);
@@ -140,7 +140,7 @@ public class SetSendActivity extends Activity {
             a=String.valueOf(year1)+String.valueOf(month1)+String.valueOf(day1)+String.valueOf(hour1)+String.valueOf(min);
 
             //获取制定计划选中时间
-            year2=calendar.get(Calendar.YEAR);
+            year2=calendar.get(Calendar.YEAR)-2000;
             month2=calendar.get(Calendar.MONTH);
             day2=calendar.get(Calendar.DAY_OF_MONTH);
             hour2= calendar.get(Calendar.HOUR_OF_DAY);

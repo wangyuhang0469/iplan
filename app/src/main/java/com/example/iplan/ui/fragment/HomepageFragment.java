@@ -26,6 +26,7 @@ import com.example.iplan.R;
 import com.example.iplan.adapter.MyDatabaseHelper;
 import com.example.iplan.base.ParentWithNaviFragment;
 import com.example.iplan.model.UserModel;
+import com.example.iplan.planclass.Plan;
 import com.example.iplan.ui.ChangePlan;
 import com.example.iplan.ui.SetPlanActivity;
 import com.example.iplan.ui.SetSendActivity;
@@ -110,6 +111,7 @@ public class HomepageFragment extends ParentWithNaviFragment {
 
                         String date1=year1+"年"+mon+"月"+day+"日";
                         date.setText(date1);
+
                         getData();
                         listview.setAdapter(simpleAdapter);
                     }
@@ -189,27 +191,45 @@ public class HomepageFragment extends ParentWithNaviFragment {
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
-
                 TextView tv1 = (TextView)view.findViewById(R.id.show_hour);
                 TextView tv2 = (TextView)view.findViewById(R.id.show_min);
                 TextView tv3 = (TextView)view.findViewById(R.id.title);
+                String year1=format(c.get(Calendar.YEAR));
+                String mon=format(c.get(Calendar.MONTH) + 1);
+                String day=format(c.get(Calendar.DAY_OF_MONTH));
                 String TV1 = tv1.getText().toString();
                 String TV2 = tv2.getText().toString();
                 String TV3= tv3.getText().toString();
+                String TV4 = year1.toString();
+                String TV5 = mon.toString();
+                String TV6= day.toString();
 
                 Intent intent = new Intent(getActivity(),ChangePlan.class);
                 Bundle bundle = new Bundle();
                 bundle.putString("hour",TV1);
                 bundle.putString("min",TV2);
                 bundle.putString("title",TV3);
+                bundle.putString("year",TV4);
+                bundle.putString("mon",TV5);
+                bundle.putString("day",TV6);
+
                 intent.putExtras(bundle);
-                startActivity(intent);
-
-
-
+                startActivityForResult(intent,0);
             }
         });
+
+//        protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+//            super.onActivityResult(requestCode, resultCode, data);
+////            if(requestCode==0 && resultCode==RESULT_OK){
+////                Bundle bundle = data.getExtras();
+////                Plan a = (Plan) bundle.getSerializable("a");
+////                if(bundle!=null)
+////                    sendSchedukeMessage(a);
+////                toast(a.getWho());
+////            }
+//        }
+
+
         return view;
 
     }
