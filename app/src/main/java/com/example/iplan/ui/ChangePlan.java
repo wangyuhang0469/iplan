@@ -66,13 +66,18 @@ public class ChangePlan extends AppCompatActivity {
         String mon = bunde.getString("mon");
         String day = bunde.getString("day");
         String text_alarm = bunde.getString("text_alarm");
-        final String arr []= {hour,min,title,text_alarm};
+        int A = Integer.parseInt(mon)-1;
+        final String arr []= {hour,min,title,year,A+"",day};
         //设置数组保存现有的数据
         int a = Integer.parseInt(text_alarm);
-        String time = hour + ":" + min;
         if (a == 1)
         isAlarm.setChecked(true);
 
+        calendar.set(Calendar.HOUR_OF_DAY, informat(hour));
+        calendar.set(Calendar.MINUTE, informat(min));
+        String time = format(calendar.get(Calendar.HOUR_OF_DAY)) + ":" + format(calendar.get(Calendar.MINUTE));
+
+        Toast.makeText(this,mon,Toast.LENGTH_SHORT).show();
         editDowhat.setText(title);
         editYear.setText(year);
         editMonth.setText(mon);
@@ -120,23 +125,19 @@ public class ChangePlan extends AppCompatActivity {
 //              chosetime.getText();
 //
 //
-//                SQLiteDatabase db = dbHelper.getWritableDatabase();
-//                ContentValues values = new ContentValues();
-//
-//                EditText tv1 = (EditText)view.findViewById(R.id.show_hour);
-//                EditText tv2 = (EditText)view.findViewById(R.id.show_min);
-//                EditText tv3 = (EditText)view.findViewById(R.id.edit_dowhat);
-//                EditText tv4 = (EditText)view.findViewById(R.id.text_alarm);
-//                String hour = tv1.getText().toString();
-//                String min = tv2.getText().toString();
-//                String title = tv3.getText().toString();
+
+                SQLiteDatabase db = dbHelper.getWritableDatabase();
+                ContentValues values = new ContentValues();
+                String hour1 = calendar.get(Calendar.HOUR_OF_DAY)+"";
+                String min1 = calendar.get(Calendar.MINUTE)+"";
+                String title1 = editDowhat.getText().toString();
 //                String text_alarm = tv4.getText().toString();
-//                values.put("hour",hour);
-//                values.put("min",min);
-//                values.put("title",title);
+                values.put("hour",hour1);
+                values.put("min",min1);
+                values.put("dowhat",title1);
 //                values.put("text_alarm",text_alarm);
-//
-//                db.update("Time",values,"hour = ? and min = ? and title = ? and text_alarm = ?",arr);
+
+                db.update("Time",values,"hour = ? and min = ? and dowhat = ? and year = ? and month = ? and dayOfMonth = ?",arr);
 
 
                 Intent intent = getIntent();
@@ -152,6 +153,11 @@ public class ChangePlan extends AppCompatActivity {
 
 
     }
+    private int informat(String string){
+        int a = Integer.parseInt(string);
+        return a;
+    }
+
 
     private String format(int time) {
         String str = "" + time;
