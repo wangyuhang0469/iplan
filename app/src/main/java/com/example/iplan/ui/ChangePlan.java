@@ -1,7 +1,9 @@
 package com.example.iplan.ui;
 
+import android.app.AlertDialog;
 import android.app.TimePickerDialog;
 import android.content.ContentValues;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -17,11 +19,14 @@ import android.widget.ToggleButton;
 
 import com.example.iplan.R;
 import com.example.iplan.adapter.MyDatabaseHelper;
+import com.example.iplan.clock.AlarmManagerUtil;
+import com.example.iplan.model.UserModel;
 
 import java.util.Calendar;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 import static com.example.iplan.R.drawable.alarm_check01;
 
@@ -123,30 +128,104 @@ public class ChangePlan extends AppCompatActivity {
 //              editMonth.getText();
 //              editDayOfMonth.getText();
 //              chosetime.getText();
-//
-//
 
-                SQLiteDatabase db = dbHelper.getWritableDatabase();
-                ContentValues values = new ContentValues();
-                String hour1 = calendar.get(Calendar.HOUR_OF_DAY)+"";
-                String min1 = calendar.get(Calendar.MINUTE)+"";
-                String title1 = editDowhat.getText().toString();
+
+
+
+                    if (editDowhat.length() != 0) {
+
+                        //获取系统时间
+                        Calendar c = Calendar.getInstance();
+                        String year1 =format( c.get(Calendar.YEAR)-2000);
+                        String month1 =format( c.get(Calendar.MONTH));
+                        String day1 =format( c.get(Calendar.DAY_OF_MONTH));
+                        String hour1 =format( c.get(Calendar.HOUR_OF_DAY));
+                        String min =format( c.get(Calendar.MINUTE));
+                        String a=year1+month1+day1+hour1+min;
+                        //获取制定计划选中时间
+                        String year2=format(calendar.get(Calendar.YEAR)-2000);
+                        String month2=format(calendar.get(Calendar.MONTH));
+                        String day2=format(calendar.get(Calendar.DAY_OF_MONTH));
+                        String hour2=format(calendar.get(Calendar.HOUR_OF_DAY));
+                        String min2=format(calendar.get(Calendar.MINUTE));
+                        String b=year2+month2+day2+hour2+min2;
+                        int m=Integer.valueOf(a).intValue();
+                        int n=Integer.valueOf(b).intValue();
+
+                        int i=m-n;
+
+
+                        if (i<0) {
+//
+//                            if (isAlarm.isChecked()){
+//                                int id = calendar.get(Calendar.MONTH)*1000000 + calendar.get(Calendar.DAY_OF_MONTH)*10000 + calendar.get(Calendar.HOUR_OF_DAY)*100+calendar.get(Calendar.MINUTE);
+//                                AlarmManagerUtil.setAlarm(this, 1, calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE), id, 0, editDowhat.getText().toString(), ring);
+//                                Toast.makeText(this, "闹钟已设置", Toast.LENGTH_SHORT).show();}
+//                            Intent intent = getIntent();
+//                            setResult(RESULT_OK, intent);
+//                            finish();
+
+                            SQLiteDatabase db = dbHelper.getWritableDatabase();
+                            ContentValues values = new ContentValues();
+                            String hour = calendar.get(Calendar.HOUR_OF_DAY)+"";
+                            String min1 = calendar.get(Calendar.MINUTE)+"";
+                            String title1 = editDowhat.getText().toString();
 //                String text_alarm = tv4.getText().toString();
-                values.put("hour",hour1);
-                values.put("min",min1);
-                values.put("dowhat",title1);
+                            values.put("hour",hour);
+                            values.put("min",min1);
+                            values.put("dowhat",title1);
 //                values.put("text_alarm",text_alarm);
 
-                db.update("Time",values,"hour = ? and min = ? and dowhat = ? and year = ? and month = ? and dayOfMonth = ?",arr);
-
-
-                Intent intent = getIntent();
-                //这里使用bundle绷带来传输数据
-                Bundle bundle = new Bundle();
+                            db.update("Time",values,"hour = ? and min = ? and dowhat = ? and year = ? and month = ? and dayOfMonth = ?",arr);
+                            Intent intent = getIntent();
+                            //这里使用bundle绷带来传输数据
+                            Bundle bundle = new Bundle();
 //              bundle.putSerializable("a", a);
-                intent.putExtras(bundle);
-                setResult(2, intent);
-                finish();
+                            intent.putExtras(bundle);
+                            setResult(2, intent);
+                            finish();
+
+                        } else {
+                            AlertDialog.Builder AdBuilder = new AlertDialog.Builder(ChangePlan.this);
+                            AdBuilder.setTitle("只能给未来的时间安排计划");
+                            AdBuilder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+
+                                }
+                            }).show();
+                        }
+
+                    } else {
+                        Toast.makeText(ChangePlan.this, "请输入你的计划", Toast.LENGTH_SHORT).show();
+                    }
+
+
+
+
+
+//
+//
+
+//                SQLiteDatabase db = dbHelper.getWritableDatabase();
+//                ContentValues values = new ContentValues();
+//                String hour1 = calendar.get(Calendar.HOUR_OF_DAY)+"";
+//                String min1 = calendar.get(Calendar.MINUTE)+"";
+//                String title1 = editDowhat.getText().toString();
+////                String text_alarm = tv4.getText().toString();
+//                values.put("hour",hour1);
+//                values.put("min",min1);
+//                values.put("dowhat",title1);
+////                values.put("text_alarm",text_alarm);
+//
+//                db.update("Time",values,"hour = ? and min = ? and dowhat = ? and year = ? and month = ? and dayOfMonth = ?",arr);
+//                Intent intent = getIntent();
+//                //这里使用bundle绷带来传输数据
+//                Bundle bundle = new Bundle();
+////              bundle.putSerializable("a", a);
+//                intent.putExtras(bundle);
+//                setResult(2, intent);
+//                finish();
 
             }
         });

@@ -50,8 +50,8 @@ public class UserInfoActivity extends ParentWithNaviActivity {
     User user;
     BmobIMUserInfo info;
 
-    @Bind(R.id.btn_send)
-    Button btnSend;
+//    @Bind(R.id.btn_send)
+//    Button btnSend;
 
     @Override
     protected String title() {
@@ -87,10 +87,10 @@ public class UserInfoActivity extends ParentWithNaviActivity {
         sendAddFriendMessage();
     }
 
-    @OnClick(R.id.btn_send)
-    public void onSendClick(View view) {
-        sendSchedukeMessage();
-    }
+//    @OnClick(R.id.btn_send)
+//    public void onSendClick(View view) {
+//        sendSchedukeMessage();
+//    }
 
     /**
      * 发送添加好友的请求

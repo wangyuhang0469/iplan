@@ -6,10 +6,12 @@
     android:layout_height="match_parent"
     android:background="#ffffff"
     android:orientation="vertical">
+    <include layout="@layout/include_navi"
+        android:visibility="gone"/>
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="#ffffff">
+        android:background="#39A2E9">
         <ImageView
             android:layout_width="27dp"
             android:layout_height="27dp"
@@ -20,7 +22,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="iplan介绍"
+            android:text="关于iplan"
             android:textSize="17dp"
             android:layout_centerInParent="true"
             android:textColor="#222222"/>
@@ -32,18 +34,73 @@
         android:layout_marginLeft="10dp"
         style="@style/my_view" >
     </View>
-    <TextView
-        android:paddingLeft="30dp"
-        android:paddingRight="30dp"
-        android:paddingTop="60dp"
-        android:textStyle="bold"
-        android:lineSpacingExtra="10dp"
-        android:textColor="#090504"
-        android:layout_width="fill_parent"
-        android:layout_height="match_parent"
-        android:textSize="15dp"
-        android:text="\t\t\t\tIplan是一款给他人（自己）制定即时计划，辅以用户之间的交流、传递爱应用APP.\n
-\t\t\t\tIplan主要目的是为了给他人写计划，而且这个计划是即时性的，而不是制定长期的计划，这将大大提高实用性。\n
-\t\t\t\t我们传递的计划，不仅仅是计划本本身，而是包含着传递人的爱。希望他（她）能变得更好，这是一款可以改变你爱人，时刻让你感受到你在被人关心（你在关心别人）的APP。"
-/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+        <ImageView
+            android:layout_marginTop="50dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:src="@drawable/help"
+
+            />
+        <TextView
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="20dp"
+            android:textColor="#188AD7"
+            android:text="iPlan"/>
+        <TextView
+            android:layout_marginTop="6dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="18dp"
+            android:textColor="#188AD7"
+            android:text="一款传递爱的APP"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="bottom"
+        android:orientation="vertical">
+        <TextView
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="18dp"
+            android:textColor="#188AD7"
+            android:text="QQ群：552359763"/>
+        <TextView
+            android:layout_marginTop="6dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="18dp"
+            android:textColor="#188AD7"
+            android:text="开发团队：iPlan项目开发团队"/>
+        <TextView
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="#777777"
+            android:text="iPlan    版权所有"/>
+        <TextView
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="#777777"
+            android:text="\@Copyrifht 2017 iPlan.com"/>
+    </LinearLayout>
+
 </LinearLayout>

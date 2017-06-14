@@ -165,12 +165,10 @@ public class SetPlanActivity extends Activity {
                 }).show();
             }
 
-
-
-
         } else {
             Toast.makeText(this, "请输入你的计划", Toast.LENGTH_SHORT).show();
         }
+
     }
 
     @OnClick(R.id.tv_left)

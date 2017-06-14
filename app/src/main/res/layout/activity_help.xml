@@ -40,6 +40,30 @@
                 <!--android:layout_width="match_parent"-->
                 <!--android:layout_height="wrap_content" -->
                 <!--android:src="@drawable/"/>-->
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="30dp"
+                android:textColor="#000000"
+                android:text="如何查看计划表？"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_2"
+                style="@style/my_view" >
+            </View>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="5dp"
+                android:layout_marginTop="10dp"
+                android:textColor="#000000"
+                android:text="1、打开首页（时间轴页面），页面头部有日期选择和上一天，下一天\n2、如果查看领近两天，可以点击向左向右按钮\n3、想要查看的日期距离今天时间长，点击日期进入日历，进行日期选择"/>
+            <!--<ImageView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content" -->
+            <!--android:src="@drawable/"/>-->
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
