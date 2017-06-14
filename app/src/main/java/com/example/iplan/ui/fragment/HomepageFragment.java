@@ -147,22 +147,14 @@ public class HomepageFragment extends ParentWithNaviFragment {
             private View delview;
 
             @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
+            public boolean onItemLongClick(AdapterView<?> parent, final View view, final int position, long id) {
                 if (lastPress < parent.getCount()) {
                     delview = parent.getChildAt(lastPress).findViewById(R.id.linear_del);
                     if (null != delview) {
                         delview.setVisibility(View.GONE);
                     }
                 }
-                TextView tv1 = (TextView)view.findViewById(R.id.show_hour);
-                TextView tv2 = (TextView)view.findViewById(R.id.show_min);
-                TextView tv3 = (TextView)view.findViewById(R.id.title);
-                String TV1 = informat(tv1.getText().toString());
-                String TV2 = informat(tv2.getText().toString());
-                String TV3= tv3.getText().toString();
-                SQLiteDatabase db = dbHelper.getWritableDatabase();
-                db.delete("Time","who = ? and month = ? and dayOfmonth = ? and hour = ? and min = ?",
-                        new String[]{username,c.get(Calendar.MONTH)+"",c.get(Calendar.DAY_OF_MONTH)+"",TV1,TV2});
+
 
 
                 delview = view.findViewById(R.id.linear_del);
@@ -172,7 +164,16 @@ public class HomepageFragment extends ParentWithNaviFragment {
                     @Override
                     public void onClick(View v) {
                         delview.setVisibility(View.GONE);
+                        TextView tv1 = (TextView)view.findViewById(R.id.show_hour);
+                        TextView tv2 = (TextView)view.findViewById(R.id.show_min);
+                        TextView tv3 = (TextView)view.findViewById(R.id.title);
+                        String TV1 = informat(tv1.getText().toString());
+                        String TV2 = informat(tv2.getText().toString());
+                        SQLiteDatabase db = dbHelper.getWritableDatabase();
+                        db.delete("Time","who = ? and month = ? and dayOfmonth = ? and hour = ? and min = ?",
+                                new String[]{username,c.get(Calendar.MONTH)+"",c.get(Calendar.DAY_OF_MONTH)+"",TV1,TV2});
                         list.remove(position);
+                        toast("删除成功");
                         simpleAdapter.notifyDataSetChanged();
                     }
                 });
