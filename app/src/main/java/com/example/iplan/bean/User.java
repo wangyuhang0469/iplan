@@ -4,6 +4,7 @@ package com.example.iplan.bean;
 import com.example.iplan.db.NewFriend;
 
 import cn.bmob.v3.BmobUser;
+import cn.bmob.v3.datatype.BmobFile;
 
 /**
  * @author :smile
@@ -34,5 +35,7 @@ public class User extends BmobUser {
     }
 
 
-
+    public BmobFile PicUser() {
+        return null;
+    }
 }
