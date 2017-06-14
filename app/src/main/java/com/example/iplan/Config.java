@@ -13,6 +13,9 @@ public class Config {
     public static final String DEFAULT_APPKEY="87ab0f9bee41bce86dfadd69af692873";//外
 //    public static final String DEFAULT_APPKEY="d982d362aecbd0c769a0710228f56020";//潮州
 
+    // 是否启用账户控制系统
+    public static final boolean isOpenACL = true;
+
     //是否是debug模式
     public static final boolean DEBUG=true;
     //好友请求：未读-未添加->接收到别人发给我的好友添加请求，初始状态

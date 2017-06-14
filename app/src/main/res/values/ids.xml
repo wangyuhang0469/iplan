@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="et_mineinfo_username" type="id">用户名</item>
+    <item name="et_mineinfo_sex" type="id">性别</item>
+    <item name="et_mineinfo_age" type="id">年龄</item>
+</resources>
