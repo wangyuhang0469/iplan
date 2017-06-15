@@ -60,7 +60,7 @@ public class Utils {
         return localPath;
     }
 
-    public static Bitmap toRoundBitmap(Bitmap bitmap, Uri tempUri) {
+    public static Bitmap toRoundBitmap(Bitmap bitmap, Uri tempFile) {
         int width = bitmap.getWidth();
         int height = bitmap.getHeight();
         float roundPx;

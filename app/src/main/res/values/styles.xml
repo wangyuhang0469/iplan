@@ -138,6 +138,12 @@
         <item name="android:textColor">@color/white</item>
     </style>
 
+    <!-- 全屏幕拉伸 -->
+    <style name="w_match_h_match">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
 
 
 
