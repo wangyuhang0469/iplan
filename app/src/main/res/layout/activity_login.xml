@@ -2,9 +2,11 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mipmap/login_back" >
+    android:background="@mipmap/login_back">
+    <!--android:background="@mipmap/login_back"-->
 
     <LinearLayout
+        android:id="@+id/all"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
@@ -14,13 +16,13 @@
             android:id="@+id/iv_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="30dp"
             android:src="@mipmap/login" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_margin="25dp"
             android:background="@drawable/input_bg"
             android:orientation="vertical" >
 
@@ -60,7 +62,10 @@
             android:id="@+id/btn_login"
             android:layout_width="match_parent"
             android:layout_height="@dimen/height_title"
-            android:layout_margin="@dimen/activity_vertical_margin"
+            android:layout_marginRight="25dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
             android:background="@drawable/btn_login_selector"
             android:gravity="center"
             android:text="@string/login"

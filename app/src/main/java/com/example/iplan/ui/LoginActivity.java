@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.iplan.R;
@@ -28,6 +30,10 @@ import cn.bmob.v3.listener.LogInListener;
  */
 public class LoginActivity extends BaseActivity {
 
+    @Bind(R.id.iv_icon)
+    ImageView iv_icon;
+    @Bind(R.id.all)
+    LinearLayout all;
     @Bind(R.id.et_username)
     EditText et_username;
     @Bind(R.id.et_password)
@@ -41,6 +47,9 @@ public class LoginActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        //设置图片透明度
+//        View v = findViewById(R.id.all);//找到你要设透明背景的layout 的id
+//        v.getBackground().setAlpha(180);//0~255透明度值
     }
 
     @OnClick(R.id.btn_login)
