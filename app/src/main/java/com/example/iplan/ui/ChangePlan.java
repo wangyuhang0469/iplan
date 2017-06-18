@@ -28,6 +28,7 @@ import static com.example.iplan.R.drawable.alarm_check01;
 import static com.example.iplan.R.drawable.cancel;
 import static com.example.iplan.clock.AlarmManagerUtil.cancelAlarm;
 
+
 public class ChangePlan extends AppCompatActivity {
     private MyDatabaseHelper dbHelper;
     @Bind(R.id.tv_left)
